@@ -1,26 +1,26 @@
-import type { Web3ModalSignOptions } from '@web3modal/sign-html'
-import { Web3ModalSign } from '@web3modal/sign-html'
+import type { WalletConnectModalSignOptions } from '@walletconnect/sign-html'
+import { WalletConnectModalSign } from '@walletconnect/sign-html'
 import mitt from 'mitt'
 
 export const emitter = mitt()
 
-let web3ModalSignClient: Web3ModalSign | undefined = undefined
+let walletConnectModalSignClient: WalletConnectModalSign | undefined = undefined
 
-export type Web3ModalSignInstance = InstanceType<typeof Web3ModalSign>
+export type WalletConnectModalSignInstance = InstanceType<typeof WalletConnectModalSign>
 
-export function setWeb3ModalSignClient(options: Web3ModalSignOptions) {
-  web3ModalSignClient = new Web3ModalSign(options)
+export function setWalletConnectModalSignClient(options: WalletConnectModalSignOptions) {
+  walletConnectModalSignClient = new WalletConnectModalSign(options)
 }
 
-export async function getWeb3ModalSignClient(): Promise<Web3ModalSign> {
+export async function getWalletConnectModalSignClient(): Promise<WalletConnectModalSign> {
   return new Promise(resolve => {
-    if (web3ModalSignClient) {
-      resolve(web3ModalSignClient)
+    if (walletConnectModalSignClient) {
+      resolve(walletConnectModalSignClient)
     } else {
       const interval = setInterval(() => {
-        if (web3ModalSignClient) {
+        if (walletConnectModalSignClient) {
           clearInterval(interval)
-          resolve(web3ModalSignClient)
+          resolve(walletConnectModalSignClient)
         }
       }, 200)
     }

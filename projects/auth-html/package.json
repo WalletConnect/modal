@@ -1,5 +1,5 @@
 {
-  "name": "@web3modal/auth-html",
+  "name": "@walletconnect/auth-html",
   "version": "2.4.7",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
@@ -25,19 +25,18 @@
     "web3",
     "crypto",
     "ethereum",
-    "web3modal",
     "walletconnect",
     "auth",
     "html"
   ],
   "author": "WalletConnect <walletconnect.com>",
   "license": "Apache-2.0",
-  "homepage": "https://github.com/web3modal/web3modal",
+  "homepage": "https://github.com/walletconnect/modal",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/web3modal/web3modal.git"
+    "url": "git+https://github.com/walletconnect/modal.git"
   },
   "bugs": {
-    "url": "https://github.com/web3modal/web3modal/issues"
+    "url": "https://github.com/walletconnect/modal/issues"
   }
 }

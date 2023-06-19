@@ -1,15 +1,15 @@
-import type { Web3ModalEventCallback } from '@web3modal/sign-html'
+import type { WalletConnectModalEventCallback } from '@walletconnect/sign-html'
 import { useEffect } from 'react'
-import { getWeb3ModalSignClient } from '../client'
+import { getWalletConnectModalSignClient } from '../client'
 
-export function useOnSessionUpdate(callback: Web3ModalEventCallback) {
+export function useOnSessionUpdate(callback: WalletConnectModalEventCallback) {
   useEffect(() => {
-    getWeb3ModalSignClient().then(client => {
+    getWalletConnectModalSignClient().then(client => {
       client.onSessionUpdate(callback)
     })
 
     return () => {
-      getWeb3ModalSignClient().then(client => {
+      getWalletConnectModalSignClient().then(client => {
         client.offSessionUpdate(callback)
       })
     }

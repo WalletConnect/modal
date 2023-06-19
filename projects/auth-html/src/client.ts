@@ -6,13 +6,13 @@ import type { WalletConnectModalConfig } from '@walletconnect/modal'
 import { WalletConnectModal } from '@walletconnect/modal'
 
 // -- Types ----------------------------------------------------------------
-export interface Web3ModalAuthOptions {
+export interface WalletConnectModalAuthOptions {
   projectId: string
   metadata: AuthClientTypes.Metadata
   modalOptions?: Omit<WalletConnectModalConfig, 'projectId' | 'walletConnectVersion'>
 }
 
-export interface Web3ModalAuthSignInArguments {
+export interface WalletConnectModalAuthSignInArguments {
   statement: string
   chainId?: string
   aud?: string
@@ -20,20 +20,20 @@ export interface Web3ModalAuthSignInArguments {
 }
 
 // -- Client ---------------------------------------------------------------
-export class Web3ModalAuth {
-  #options: Web3ModalAuthOptions
+export class WalletConnectModalAuth {
+  #options: WalletConnectModalAuthOptions
   #modal: WalletConnectModal
   #initAuthClientPromise?: Promise<void> = undefined
   #authClient?: InstanceType<typeof AuthClient> = undefined
 
-  public constructor(options: Web3ModalAuthOptions) {
+  public constructor(options: WalletConnectModalAuthOptions) {
     this.#options = options
     this.#modal = this.#initModal()
     this.#initAuthClient()
   }
 
   // -- public ------------------------------------------------------------
-  public async signIn(args: Web3ModalAuthSignInArguments) {
+  public async signIn(args: WalletConnectModalAuthSignInArguments) {
     const { chainId, statement, aud, domain } = args
     const defaultChainId = chainId ?? 'eip155:1'
     const defaultAud = aud ?? location.href
@@ -93,7 +93,6 @@ export class Web3ModalAuth {
     return new WalletConnectModal({
       ...modalOptions,
       enableAuthMode: true,
-      walletConnectVersion: 2,
       projectId
     })
   }

@@ -95,7 +95,7 @@ export const CoreUtil = {
     localStorage.removeItem(CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE)
   },
 
-  setWeb3ModalVersionInStorage() {
+  setModalVersionInStorage() {
     if (typeof localStorage !== 'undefined') {
       localStorage.setItem(CoreUtil.WCM_VERSION, process.env.ROLLUP_WCM_VERSION ?? 'UNKNOWN')
     }

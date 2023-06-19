@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react'
-import type { Web3ModalSignInstance } from '../client'
-import { emitter, getWeb3ModalSignClient } from '../client'
+import type { WalletConnectModalSignInstance } from '../client'
+import { emitter, getWalletConnectModalSignClient } from '../client'
 import { useOnSessionDelete } from './useOnSessionDelete'
 import { useOnSessionExpire } from './useOnSessionExpire'
 import { useOnSessionUpdate } from './useOnSessionUpdate'
 
-type Data = Awaited<ReturnType<Web3ModalSignInstance['getSession']>>
+type Data = Awaited<ReturnType<WalletConnectModalSignInstance['getSession']>>
 
 export function useSession() {
   const [session, setSession] = useState<Data | undefined>(undefined)
@@ -32,7 +32,7 @@ export function useSession() {
 
   useEffect(() => {
     async function getActiveSession() {
-      const client = await getWeb3ModalSignClient()
+      const client = await getWalletConnectModalSignClient()
       const response = await client.getSession()
       setSession(response)
     }

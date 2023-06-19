@@ -38,7 +38,7 @@ export const ConfigCtrl = {
       OptionsCtrl.setSelectedChain(config.defaultChain)
     }
 
-    CoreUtil.setWeb3ModalVersionInStorage()
+    CoreUtil.setModalVersionInStorage()
 
     Object.assign(state, config)
   }

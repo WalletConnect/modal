@@ -1,15 +1,15 @@
-import type { Web3ModalSignDisconnectArguments } from '@web3modal/sign-html'
-import { emitter, getWeb3ModalSignClient } from '../client'
+import type { WalletConnectModalSignDisconnectArguments } from '@walletconnect/sign-html'
+import { emitter, getWalletConnectModalSignClient } from '../client'
 import { useAsyncAction } from './_useAsyncAction'
 
-export function useDisconnect(params: Web3ModalSignDisconnectArguments) {
+export function useDisconnect(params: WalletConnectModalSignDisconnectArguments) {
   const { error, loading, setError, setLoading } = useAsyncAction()
 
-  async function disconnect(paramsOverride?: Web3ModalSignDisconnectArguments) {
+  async function disconnect(paramsOverride?: WalletConnectModalSignDisconnectArguments) {
     try {
       setLoading(true)
       setError(undefined)
-      const client = await getWeb3ModalSignClient()
+      const client = await getWalletConnectModalSignClient()
       await client.disconnect(paramsOverride ?? params)
       emitter.emit('session_change')
     } catch (err) {

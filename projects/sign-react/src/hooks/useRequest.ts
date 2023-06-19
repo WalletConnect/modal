@@ -1,15 +1,15 @@
-import type { Web3ModalSignRequestArguments } from '@web3modal/sign-html'
-import { getWeb3ModalSignClient } from '../client'
+import type { WalletConnectModalSignRequestArguments } from '@walletconnect/sign-html'
+import { getWalletConnectModalSignClient } from '../client'
 import { useAsyncAction } from './_useAsyncAction'
 
-export function useRequest<Result>(params: Web3ModalSignRequestArguments) {
+export function useRequest<Result>(params: WalletConnectModalSignRequestArguments) {
   const { data, error, loading, setData, setError, setLoading } = useAsyncAction<Result>()
 
-  async function request(paramsOverride?: Web3ModalSignRequestArguments) {
+  async function request(paramsOverride?: WalletConnectModalSignRequestArguments) {
     try {
       setLoading(true)
       setError(undefined)
-      const client = await getWeb3ModalSignClient()
+      const client = await getWalletConnectModalSignClient()
       const response = await client.request<Result>(paramsOverride ?? params)
       setData(response)
 

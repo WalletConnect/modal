@@ -1,23 +1,23 @@
-import type { Web3ModalAuthOptions } from '@web3modal/auth-html'
-import { Web3ModalAuth } from '@web3modal/auth-html'
+import type { WalletConnectModalAuthOptions } from '@walletconnect/auth-html'
+import { WalletConnectModalAuth } from '@walletconnect/auth-html'
 
-let web3ModalAuthClient: Web3ModalAuth | undefined = undefined
+let walletConnectModalAuthClient: WalletConnectModalAuth | undefined = undefined
 
-export function setWeb3ModalAuthClient(options: Web3ModalAuthOptions) {
-  web3ModalAuthClient = new Web3ModalAuth(options)
+export function setWalletConnectModalAuthClient(options: WalletConnectModalAuthOptions) {
+  walletConnectModalAuthClient = new WalletConnectModalAuth(options)
 }
 
-export type Web3ModalAuthInstance = InstanceType<typeof Web3ModalAuth>
+export type WalletConnectModalAuthInstance = InstanceType<typeof WalletConnectModalAuth>
 
-export async function getWeb3ModalAuthClient(): Promise<Web3ModalAuth> {
+export async function getWalletConnectModalAuthClient(): Promise<WalletConnectModalAuth> {
   return new Promise(resolve => {
-    if (web3ModalAuthClient) {
-      resolve(web3ModalAuthClient)
+    if (walletConnectModalAuthClient) {
+      resolve(walletConnectModalAuthClient)
     } else {
       const interval = setInterval(() => {
-        if (web3ModalAuthClient) {
+        if (walletConnectModalAuthClient) {
           clearInterval(interval)
-          resolve(web3ModalAuthClient)
+          resolve(walletConnectModalAuthClient)
         }
       }, 200)
     }

@@ -1,1 +1,1 @@
-export { Web3ModalSign } from './src/client'
+export { WalletConnectModalSign } from './src/client'

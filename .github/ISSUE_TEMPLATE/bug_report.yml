@@ -27,6 +27,6 @@ body:
   - type: textarea
     attributes:
       label: List of related npm package versions
-      description: Include all web3modal, wagmi and other packages that can be related to the issue, including their versions.
+      description: Include all relevant packages that can be related to the issue, including their versions.
     validations:
       required: true

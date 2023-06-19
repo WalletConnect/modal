@@ -1,18 +1,18 @@
-import type { Web3ModalAuthSignInArguments } from '@web3modal/auth-html'
-import type { Web3ModalAuthInstance } from '../client'
-import { getWeb3ModalAuthClient } from '../client'
+import type { WalletConnectModalAuthSignInArguments } from '@walletconnect/auth-html'
+import type { WalletConnectModalAuthInstance } from '../client'
+import { getWalletConnectModalAuthClient } from '../client'
 import { useAsyncAction } from './_useAsyncAction'
 
-type Data = Awaited<ReturnType<Web3ModalAuthInstance['signIn']>>
+type Data = Awaited<ReturnType<WalletConnectModalAuthInstance['signIn']>>
 
-export function useSignIn(params: Web3ModalAuthSignInArguments) {
+export function useSignIn(params: WalletConnectModalAuthSignInArguments) {
   const { data, error, loading, setData, setError, setLoading } = useAsyncAction<Data>()
 
-  async function signIn(paramsOverride?: Web3ModalAuthSignInArguments) {
+  async function signIn(paramsOverride?: WalletConnectModalAuthSignInArguments) {
     try {
       setLoading(true)
       setError(undefined)
-      const client = await getWeb3ModalAuthClient()
+      const client = await getWalletConnectModalAuthClient()
       const response = await client.signIn(paramsOverride ?? params)
       setData(response)
 

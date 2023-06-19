@@ -1,5 +1,5 @@
-export { Web3ModalSign } from './src/components/Web3ModalSign'
-export type { Web3ModalSignProps } from './src/components/Web3ModalSign'
+export { WalletConnectModalSign } from './src/components/WalletConnectModalSign'
+export type { WalletConnectModalSignProps } from './src/components/WalletConnectModalSign'
 export { useConnect } from './src/hooks/useConnect'
 export { useDisconnect } from './src/hooks/useDisconnect'
 export { useOnSessionDelete } from './src/hooks/useOnSessionDelete'

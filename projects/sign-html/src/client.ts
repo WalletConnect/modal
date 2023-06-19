@@ -4,32 +4,32 @@ import { WalletConnectModal } from '@walletconnect/modal'
 import SignClient from '@walletconnect/sign-client'
 
 // -- Types ----------------------------------------------------------------
-export type Web3ModalSignSession = SignClient['session']['values'][number]
+export type WalletConnectModalSignSession = SignClient['session']['values'][number]
 
-export interface Web3ModalSignOptions {
+export interface WalletConnectModalSignOptions {
   projectId: string
   metadata: SignClient['metadata']
   relayUrl?: string
   modalOptions?: Omit<WalletConnectModalConfig, 'projectId' | 'walletConnectVersion'>
 }
 
-export type Web3ModalSignConnectArguments = Parameters<SignClient['connect']>[0]
+export type WalletConnectModalSignConnectArguments = Parameters<SignClient['connect']>[0]
 
-export type Web3ModalSignRequestArguments = Parameters<SignClient['request']>[0]
+export type WalletConnectModalSignRequestArguments = Parameters<SignClient['request']>[0]
 
-export type Web3ModalSignDisconnectArguments = Parameters<SignClient['disconnect']>[0]
+export type WalletConnectModalSignDisconnectArguments = Parameters<SignClient['disconnect']>[0]
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any
-export type Web3ModalEventCallback = (data: any) => void
+export type WalletConnectModalEventCallback = (data: any) => void
 
 // -- Client ---------------------------------------------------------------
-export class Web3ModalSign {
-  #options: Web3ModalSignOptions
+export class WalletConnectModalSign {
+  #options: WalletConnectModalSignOptions
   #modal: WalletConnectModal
   #initSignClientPromise?: Promise<void> = undefined
   #signClient?: InstanceType<typeof SignClient> = undefined
 
-  public constructor(options: Web3ModalSignOptions) {
+  public constructor(options: WalletConnectModalSignOptions) {
     this.#options = options
     this.#modal = this.#initModal()
     this.#initModal()
@@ -37,10 +37,10 @@ export class Web3ModalSign {
   }
 
   // -- public ------------------------------------------------------------
-  public async connect(args: Web3ModalSignConnectArguments) {
+  public async connect(args: WalletConnectModalSignConnectArguments) {
     const { requiredNamespaces, optionalNamespaces } = args
 
-    return new Promise<Web3ModalSignSession>(async (resolve, reject) => {
+    return new Promise<WalletConnectModalSignSession>(async (resolve, reject) => {
       await this.#initSignClient()
 
       const unsubscribeModal = this.#modal.subscribeModal(state => {
@@ -83,12 +83,12 @@ export class Web3ModalSign {
     })
   }
 
-  public async disconnect(args: Web3ModalSignDisconnectArguments) {
+  public async disconnect(args: WalletConnectModalSignDisconnectArguments) {
     await this.#initSignClient()
     await this.#signClient!.disconnect(args)
   }
 
-  public async request<Result>(args: Web3ModalSignRequestArguments) {
+  public async request<Result>(args: WalletConnectModalSignRequestArguments) {
     await this.#initSignClient()
 
     const result = await this.#signClient!.request(args)
@@ -108,42 +108,42 @@ export class Web3ModalSign {
     return this.#signClient!.session.getAll().at(-1)
   }
 
-  public async onSessionEvent(callback: Web3ModalEventCallback) {
+  public async onSessionEvent(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.on('session_event', callback)
   }
 
-  public async offSessionEvent(callback: Web3ModalEventCallback) {
+  public async offSessionEvent(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.off('session_event', callback)
   }
 
-  public async onSessionUpdate(callback: Web3ModalEventCallback) {
+  public async onSessionUpdate(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.on('session_update', callback)
   }
 
-  public async offSessionUpdate(callback: Web3ModalEventCallback) {
+  public async offSessionUpdate(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.off('session_update', callback)
   }
 
-  public async onSessionDelete(callback: Web3ModalEventCallback) {
+  public async onSessionDelete(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.on('session_delete', callback)
   }
 
-  public async offSessionDelete(callback: Web3ModalEventCallback) {
+  public async offSessionDelete(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.off('session_delete', callback)
   }
 
-  public async onSessionExpire(callback: Web3ModalEventCallback) {
+  public async onSessionExpire(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.on('session_expire', callback)
   }
 
-  public async offSessionExpire(callback: Web3ModalEventCallback) {
+  public async offSessionExpire(callback: WalletConnectModalEventCallback) {
     await this.#initSignClient()
     this.#signClient!.off('session_expire', callback)
   }
@@ -154,7 +154,6 @@ export class Web3ModalSign {
 
     return new WalletConnectModal({
       ...modalOptions,
-      walletConnectVersion: 2,
       projectId
     })
   }
