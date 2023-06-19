@@ -6,7 +6,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-platform-selection')
-export class W3mPlatformSelection extends LitElement {
+export class WcmPlatformSelection extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -93,6 +93,6 @@ export class W3mPlatformSelection extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-platform-selection': W3mPlatformSelection
+    'wcm-platform-selection': WcmPlatformSelection
   }
 }

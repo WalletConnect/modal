@@ -4,24 +4,7 @@ import { ConfigCtrl, ModalCtrl, OptionsCtrl, ThemeCtrl } from '#core'
 /**
  * Types
  */
-export type WalletConnectModalConfig = Pick<
-  ConfigCtrlState,
-  | 'desktopWallets'
-  | 'enableAuthMode'
-  | 'enableExplorer'
-  | 'explorerExcludedWalletIds'
-  | 'explorerRecommendedWalletIds'
-  | 'mobileWallets'
-  | 'privacyPolicyUrl'
-  | 'projectId'
-  | 'standaloneChains'
-  | 'termsOfServiceUrl'
-  | 'tokenImages'
-  | 'walletImages'
-> &
-  ThemeCtrlState & {
-    walletConnectVersion: 1 | 2
-  }
+export type WalletConnectModalConfig = ConfigCtrlState & ThemeCtrlState
 
 /**
  * Client
@@ -29,7 +12,7 @@ export type WalletConnectModalConfig = Pick<
 export class WalletConnectModal {
   public constructor(config: WalletConnectModalConfig) {
     ThemeCtrl.setThemeConfig(config)
-    ConfigCtrl.setConfig({ enableStandaloneMode: true, ...config })
+    ConfigCtrl.setConfig(config)
     this.initUi()
   }
 

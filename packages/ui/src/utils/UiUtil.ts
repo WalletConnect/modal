@@ -11,23 +11,13 @@ import {
   WcConnectionCtrl
 } from '#core'
 import type { LitElement } from 'lit'
-import { ChainPresets } from '../presets/ChainPresets'
-import { TokenPresets } from '../presets/TokenPresets'
-import { DataUtil } from './DataUtil'
 
 export const UiUtil = {
   MOBILE_BREAKPOINT: 600,
 
-  W3M_RECENT_WALLET_DATA: 'W3M_RECENT_WALLET_DATA',
+  WCM_RECENT_WALLET_DATA: 'WCM_RECENT_WALLET_DATA',
 
   EXPLORER_WALLET_URL: 'https://explorer.walletconnect.com/?type=wallet',
-
-  rejectStandaloneButtonComponent() {
-    const { isStandalone } = OptionsCtrl.state
-    if (isStandalone) {
-      throw new Error('Web3Modal button components are not available in standalone mode.')
-    }
-  },
 
   getShadowRootElement(root: LitElement, selector: string) {
     const el = root.renderRoot.querySelector(selector)
@@ -52,24 +42,6 @@ export const UiUtil = {
 
   getWalletName(name: string, short = false) {
     return short ? name.split(' ')[0] : name
-  },
-
-  getChainIcon(chainId: number | string) {
-    const imageId = ChainPresets[chainId]
-    const { projectId, chainImages } = ConfigCtrl.state
-
-    return (
-      chainImages?.[chainId] ?? (projectId && imageId ? ExplorerCtrl.getAssetImageUrl(imageId) : '')
-    )
-  },
-
-  getTokenIcon(symbol: string) {
-    const imageId = TokenPresets[symbol]?.icon
-    const { projectId, tokenImages } = ConfigCtrl.state
-
-    return (
-      tokenImages?.[symbol] ?? (projectId && imageId ? ExplorerCtrl.getAssetImageUrl(imageId) : '')
-    )
   },
 
   isMobileAnimation() {
@@ -172,11 +144,10 @@ export const UiUtil = {
   },
 
   getCustomImageUrls() {
-    const { chainImages, walletImages } = ConfigCtrl.state
-    const chainUrls = Object.values(chainImages ?? {})
+    const { walletImages } = ConfigCtrl.state
     const walletUrls = Object.values(walletImages ?? {})
 
-    return Object.values([...chainUrls, ...walletUrls])
+    return Object.values(walletUrls)
   },
 
   truncate(value: string, strLen = 8) {
@@ -224,21 +195,15 @@ export const UiUtil = {
   },
 
   setRecentWallet(wallet: WalletData) {
-    const { walletConnectVersion } = OptionsCtrl.state
-    localStorage.setItem(
-      UiUtil.W3M_RECENT_WALLET_DATA,
-      JSON.stringify({ [walletConnectVersion]: wallet })
-    )
+    localStorage.setItem(UiUtil.WCM_RECENT_WALLET_DATA, JSON.stringify(wallet))
   },
 
   getRecentWallet() {
-    const wallet = localStorage.getItem(UiUtil.W3M_RECENT_WALLET_DATA)
+    const wallet = localStorage.getItem(UiUtil.WCM_RECENT_WALLET_DATA)
     if (wallet) {
-      const { walletConnectVersion } = OptionsCtrl.state
       const json = JSON.parse(wallet)
-      if (json[walletConnectVersion]) {
-        return json[walletConnectVersion] as WalletData
-      }
+
+      return json as WalletData
     }
 
     return undefined
@@ -253,28 +218,22 @@ export const UiUtil = {
   },
 
   getCachedRouterWalletPlatforms() {
-    const { id, desktop, mobile, injected } = CoreUtil.getWalletRouterData()
-    const injectedWallets = DataUtil.installedInjectedWallets()
-    const isInjected = Boolean(injected?.length)
-    const isInjectedInstalled = injectedWallets.some(wallet => wallet.id === id)
+    const { desktop, mobile } = CoreUtil.getWalletRouterData()
     const isDesktop = Boolean(desktop?.native)
     const isWeb = Boolean(desktop?.universal)
     const isMobile = Boolean(mobile?.native) || Boolean(mobile?.universal)
 
-    return { isInjectedInstalled, isInjected, isDesktop, isMobile, isWeb }
+    return { isDesktop, isMobile, isWeb }
   },
 
   goToConnectingView(wallet: WalletData) {
     RouterCtrl.setData({ Wallet: wallet })
     const isMobileDevice = CoreUtil.isMobile()
-    const { isDesktop, isWeb, isMobile, isInjectedInstalled } =
-      UiUtil.getCachedRouterWalletPlatforms()
+    const { isDesktop, isWeb, isMobile } = UiUtil.getCachedRouterWalletPlatforms()
 
     // Mobile
     if (isMobileDevice) {
-      if (isInjectedInstalled) {
-        RouterCtrl.push('InjectedConnecting')
-      } else if (isMobile) {
+      if (isMobile) {
         RouterCtrl.push('MobileConnecting')
       } else if (isWeb) {
         RouterCtrl.push('WebConnecting')
@@ -284,9 +243,7 @@ export const UiUtil = {
     }
 
     // Desktop
-    else if (isInjectedInstalled) {
-      RouterCtrl.push('InjectedConnecting')
-    } else if (isDesktop) {
+    else if (isDesktop) {
       RouterCtrl.push('DesktopConnecting')
     } else if (isWeb) {
       RouterCtrl.push('WebConnecting')

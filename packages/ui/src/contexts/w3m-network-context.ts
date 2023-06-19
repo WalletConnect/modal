@@ -4,7 +4,7 @@ import { customElement, state } from 'lit/decorators.js'
 import { UiUtil } from '../utils/UiUtil'
 
 @customElement('wcm-network-context')
-export class W3mNetworkContext extends LitElement {
+export class WcmNetworkContext extends LitElement {
   @state() private activeChainId?: number = undefined
 
   // -- lifecycle ---------------------------------------------------- //
@@ -48,6 +48,6 @@ export class W3mNetworkContext extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-network-context': W3mNetworkContext
+    'wcm-network-context': WcmNetworkContext
   }
 }

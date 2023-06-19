@@ -6,7 +6,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-connector-waiting')
-export class W3mConnectorWaiting extends LitElement {
+export class WcmConnectorWaiting extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -70,6 +70,6 @@ export class W3mConnectorWaiting extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-connector-waiting': W3mConnectorWaiting
+    'wcm-connector-waiting': WcmConnectorWaiting
   }
 }

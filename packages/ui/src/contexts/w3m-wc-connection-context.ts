@@ -7,7 +7,7 @@ const FOUR_MIN_MS = 240_000
 const ONE_SEC_MS = 1_000
 
 @customElement('wcm-wc-connection-context')
-export class W3mWcConnectionContext extends LitElement {
+export class WcmWcConnectionContext extends LitElement {
   // -- lifecycle ---------------------------------------------------- //
   public constructor() {
     super()
@@ -79,6 +79,6 @@ export class W3mWcConnectionContext extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-wc-connection-context': W3mWcConnectionContext
+    'wcm-wc-connection-context': WcmWcConnectionContext
   }
 }

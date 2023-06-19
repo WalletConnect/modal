@@ -8,7 +8,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-qrcode')
-export class W3mQrCode extends LitElement {
+export class WcmQrCode extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -55,6 +55,6 @@ export class W3mQrCode extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-qrcode': W3mQrCode
+    'wcm-qrcode': WcmQrCode
   }
 }

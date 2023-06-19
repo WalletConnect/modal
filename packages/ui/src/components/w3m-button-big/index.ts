@@ -7,7 +7,7 @@ import styles from './styles.css'
 type Variant = 'primary' | 'secondary'
 
 @customElement('wcm-button-big')
-export class W3mButtonBig extends LitElement {
+export class WcmButtonBig extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -30,6 +30,6 @@ export class W3mButtonBig extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-button-big': W3mButtonBig
+    'wcm-button-big': WcmButtonBig
   }
 }

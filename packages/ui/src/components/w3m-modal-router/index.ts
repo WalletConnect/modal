@@ -8,7 +8,7 @@ import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
 
 @customElement('wcm-modal-router')
-export class W3mModalRouter extends LitElement {
+export class WcmModalRouter extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -111,6 +111,6 @@ export class W3mModalRouter extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-modal-router': W3mModalRouter
+    'wcm-modal-router': WcmModalRouter
   }
 }

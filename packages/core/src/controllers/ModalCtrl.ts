@@ -1,11 +1,7 @@
 import { proxy, subscribe as valtioSub } from 'valtio/vanilla'
 import type { ModalCtrlState } from '../types/controllerTypes'
-import { AccountCtrl } from './AccountCtrl'
-import { ClientCtrl } from './ClientCtrl'
-import { ConfigCtrl } from './ConfigCtrl'
 import { OptionsCtrl } from './OptionsCtrl'
 import { RouterCtrl } from './RouterCtrl'
-import { WcConnectionCtrl } from './WcConnectionCtrl'
 
 // -- types -------------------------------------------------------- //
 export interface OpenOptions {
@@ -29,39 +25,18 @@ export const ModalCtrl = {
 
   async open(options?: OpenOptions) {
     return new Promise<void>(resolve => {
-      const { isStandalone, isUiLoaded, isDataLoaded, isPreferInjected, selectedChain } =
-        OptionsCtrl.state
-      const { isConnected } = AccountCtrl.state
-      const { enableNetworkView } = ConfigCtrl.state
+      const { isUiLoaded, isDataLoaded } = OptionsCtrl.state
 
-      if (!isStandalone) {
-        WcConnectionCtrl.setPairingEnabled(true)
-      }
+      OptionsCtrl.setStandaloneUri(options?.uri)
+      OptionsCtrl.setStandaloneChains(options?.standaloneChains)
+      RouterCtrl.reset('ConnectWallet')
 
-      if (isStandalone) {
-        OptionsCtrl.setStandaloneUri(options?.uri)
-        OptionsCtrl.setStandaloneChains(options?.standaloneChains)
-        RouterCtrl.reset('ConnectWallet')
-      } else if (options?.route) {
+      if (options?.route) {
         RouterCtrl.reset(options.route)
-      } else if (isConnected) {
-        RouterCtrl.reset('Account')
-      } else if (enableNetworkView) {
-        RouterCtrl.reset('SelectNetwork')
-      } else if (isPreferInjected) {
-        ClientCtrl.client()
-          .connectConnector('injected', selectedChain?.id)
-          .catch(err => console.error(err))
-        resolve()
-
-        return
-      } else {
-        RouterCtrl.reset('ConnectWallet')
       }
 
-      const { pairingUri } = WcConnectionCtrl.state
       // Open modal if essential async data is ready
-      if (isUiLoaded && isDataLoaded && (isStandalone || pairingUri || isConnected)) {
+      if (isUiLoaded && isDataLoaded) {
         state.open = true
         resolve()
       }
@@ -69,12 +44,7 @@ export const ModalCtrl = {
       else {
         const interval = setInterval(() => {
           const opts = OptionsCtrl.state
-          const connection = WcConnectionCtrl.state
-          if (
-            opts.isUiLoaded &&
-            opts.isDataLoaded &&
-            (opts.isStandalone || connection.pairingUri || isConnected)
-          ) {
+          if (opts.isUiLoaded && opts.isDataLoaded) {
             clearInterval(interval)
             state.open = true
             resolve()

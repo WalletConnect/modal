@@ -12,7 +12,7 @@ import { customElement } from 'lit/decorators.js'
 import { UiUtil } from '../utils/UiUtil'
 
 @customElement('wcm-account-context')
-export class W3mAccountContext extends LitElement {
+export class WcmAccountContext extends LitElement {
   // -- lifecycle ---------------------------------------------------- //
   public constructor() {
     super()
@@ -81,6 +81,6 @@ export class W3mAccountContext extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-account-context': W3mAccountContext
+    'wcm-account-context': WcmAccountContext
   }
 }

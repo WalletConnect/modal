@@ -7,7 +7,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-modal-backcard')
-export class W3mModalBackcard extends LitElement {
+export class WcmModalBackcard extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -63,6 +63,6 @@ export class W3mModalBackcard extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-modal-backcard': W3mModalBackcard
+    'wcm-modal-backcard': WcmModalBackcard
   }
 }

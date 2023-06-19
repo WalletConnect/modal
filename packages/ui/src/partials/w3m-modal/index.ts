@@ -10,7 +10,7 @@ import styles from './styles.css'
 type Target = HTMLElement | undefined
 
 @customElement('wcm-modal')
-export class W3mModal extends LitElement {
+export class WcmModal extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -51,8 +51,8 @@ export class W3mModal extends LitElement {
     const body = document.querySelector('body')
     if (body) {
       if (enabled) {
-        const w3mStyles = document.getElementById('wcm-styles')
-        w3mStyles?.remove()
+        const wcmStyles = document.getElementById('wcm-styles')
+        wcmStyles?.remove()
       } else {
         document.head.insertAdjacentHTML(
           'beforeend',
@@ -171,6 +171,6 @@ export class W3mModal extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-modal': W3mModal
+    'wcm-modal': WcmModal
   }
 }

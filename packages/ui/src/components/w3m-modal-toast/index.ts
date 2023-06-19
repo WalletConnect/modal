@@ -7,7 +7,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-modal-toast')
-export class W3mModalToast extends LitElement {
+export class WcmModalToast extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -58,6 +58,6 @@ export class W3mModalToast extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-modal-toast': W3mModalToast
+    'wcm-modal-toast': WcmModalToast
   }
 }

@@ -4,7 +4,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-modal-footer')
-export class W3mModalFooter extends LitElement {
+export class WcmModalFooter extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- render ------------------------------------------------------- //
@@ -19,6 +19,6 @@ export class W3mModalFooter extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-modal-footer': W3mModalFooter
+    'wcm-modal-footer': WcmModalFooter
   }
 }

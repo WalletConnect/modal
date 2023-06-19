@@ -5,7 +5,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-search-input')
-export class W3mSearchInput extends LitElement {
+export class WcmSearchInput extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   @property() public onChange = () => null
@@ -21,6 +21,6 @@ export class W3mSearchInput extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-search-input': W3mSearchInput
+    'wcm-search-input': WcmSearchInput
   }
 }

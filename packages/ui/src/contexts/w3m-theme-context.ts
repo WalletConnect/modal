@@ -5,7 +5,7 @@ import { ThemeUtil } from '../utils/ThemeUtil'
 import { UiUtil } from '../utils/UiUtil'
 
 @customElement('wcm-theme-context')
-export class W3mThemeContext extends LitElement {
+export class WcmThemeContext extends LitElement {
   // -- lifecycle ---------------------------------------------------- //
   public constructor() {
     super()
@@ -41,6 +41,6 @@ export class W3mThemeContext extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-theme-context': W3mThemeContext
+    'wcm-theme-context': WcmThemeContext
   }
 }

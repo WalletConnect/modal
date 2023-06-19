@@ -47,7 +47,7 @@ export const ExplorerCtrl = {
 
     // Fetch default recomended wallets based on user's device, options and excluded config
     else {
-      const { standaloneChains, walletConnectVersion, isAuth } = OptionsCtrl.state
+      const { standaloneChains, isAuth } = OptionsCtrl.state
       const chainsFilter = standaloneChains?.join(',')
       const isExcluded = CoreUtil.isArray(explorerExcludedWalletIds)
       const params = {
@@ -55,7 +55,7 @@ export const ExplorerCtrl = {
         sdks: isAuth ? 'auth_v1' : undefined,
         entries: CoreUtil.RECOMMENDED_WALLET_AMOUNT,
         chains: chainsFilter,
-        version: walletConnectVersion,
+        version: 2,
         excludedIds: isExcluded ? explorerExcludedWalletIds.join(',') : undefined
       }
       const { listings } = isMobile

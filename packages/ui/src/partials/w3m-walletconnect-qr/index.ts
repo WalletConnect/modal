@@ -6,7 +6,7 @@ import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
 
 @customElement('wcm-walletconnect-qr')
-export class W3mWalletConnectQr extends LitElement {
+export class WcmWalletConnectQr extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -59,6 +59,6 @@ export class W3mWalletConnectQr extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-walletconnect-qr': W3mWalletConnectQr
+    'wcm-walletconnect-qr': WcmWalletConnectQr
   }
 }

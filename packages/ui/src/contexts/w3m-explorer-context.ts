@@ -5,7 +5,7 @@ import { DataUtil } from '../utils/DataUtil'
 import { UiUtil } from '../utils/UiUtil'
 
 @customElement('wcm-explorer-context')
-export class W3mExplorerContext extends LitElement {
+export class WcmExplorerContext extends LitElement {
   // -- state & properties ------------------------------------------- //
   @state() private preload = true
 
@@ -64,6 +64,6 @@ export class W3mExplorerContext extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-explorer-context': W3mExplorerContext
+    'wcm-explorer-context': WcmExplorerContext
   }
 }

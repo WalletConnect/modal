@@ -25,7 +25,7 @@ export default function createConfig(packageJson, isBundle = false) {
   })
 
   const replacePlugin = replace({
-    'process.env.ROLLUP_W3M_VERSION': JSON.stringify(packageJson.version)
+    'process.env.ROLLUP_WCM_VERSION': JSON.stringify(packageJson.version)
   })
 
   const plugnsCommon = [replacePlugin, litCssPlugin, minifyHtml.default()]

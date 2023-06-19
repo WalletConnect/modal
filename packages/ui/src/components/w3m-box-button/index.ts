@@ -5,7 +5,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-box-button')
-export class W3mBoxButton extends LitElement {
+export class WcmBoxButton extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -26,6 +26,6 @@ export class W3mBoxButton extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-box-button': W3mBoxButton
+    'wcm-box-button': WcmBoxButton
   }
 }

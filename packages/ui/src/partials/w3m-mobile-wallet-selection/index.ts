@@ -7,7 +7,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-mobile-wallet-selection')
-export class W3mMobileWalletSelection extends LitElement {
+export class WcmMobileWalletSelection extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- private ------------------------------------------------------ //
@@ -73,6 +73,6 @@ export class W3mMobileWalletSelection extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-mobile-wallet-selection': W3mMobileWalletSelection
+    'wcm-mobile-wallet-selection': WcmMobileWalletSelection
   }
 }

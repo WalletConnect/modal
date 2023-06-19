@@ -15,7 +15,7 @@ type Variant =
 type Color = 'accent' | 'error' | 'inverse' | 'primary' | 'secondary' | 'tertiary'
 
 @customElement('wcm-text')
-export class W3mText extends LitElement {
+export class WcmText extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -49,6 +49,6 @@ export class W3mText extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-text': W3mText
+    'wcm-text': WcmText
   }
 }

@@ -6,7 +6,7 @@ import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
 
 @customElement('wcm-token-image')
-export class W3mTokenImage extends LitElement {
+export class WcmTokenImage extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -28,6 +28,6 @@ export class W3mTokenImage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-token-image': W3mTokenImage
+    'wcm-token-image': WcmTokenImage
   }
 }

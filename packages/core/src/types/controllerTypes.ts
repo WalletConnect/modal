@@ -1,5 +1,3 @@
-import type { EthereumClient } from '@web3modal/ethereum'
-
 export interface MobileWallet {
   id: string
   name: string
@@ -26,19 +24,12 @@ export interface Chain {
 // -- ConfigCtrl ------------------------------------------- //
 export interface ConfigCtrlState {
   projectId: string
-  walletConnectVersion?: 1 | 2
   standaloneChains?: string[]
   defaultChain?: Chain
   mobileWallets?: MobileWallet[]
   desktopWallets?: DesktopWallet[]
   walletImages?: Record<string, string>
-  chainImages?: Record<string, string>
-  tokenImages?: Record<string, string>
-  tokenContracts?: Record<number, string>
-  enableStandaloneMode?: boolean
   enableAuthMode?: boolean
-  enableNetworkView?: boolean
-  enableAccountView?: boolean
   enableExplorer?: boolean
   explorerRecommendedWalletIds?: string[] | 'NONE'
   explorerExcludedWalletIds?: string[] | 'ALL'
@@ -54,28 +45,13 @@ export interface ModalCtrlState {
 // -- OptionsCtrl --------------------------------------- //
 export interface OptionsCtrlState {
   selectedChain?: Chain
-  chains?: EthereumClient['chains']
   standaloneChains?: string[]
   standaloneUri?: string
-  isStandalone: boolean
   isAuth: boolean
   isCustomDesktop: boolean
   isCustomMobile: boolean
   isDataLoaded: boolean
   isUiLoaded: boolean
-  isPreferInjected: boolean
-  walletConnectVersion: 1 | 2
-}
-
-// -- AccountCtrl -------------------------------------------- //
-export interface AccountCtrlState {
-  address?: `0x${string}`
-  isConnected: boolean
-  profileName?: string | null
-  profileAvatar?: string | null
-  profileLoading?: boolean
-  balanceLoading?: boolean
-  balance?: { amount: string; symbol: string }
 }
 
 // -- ExplorerCtrl ------------------------------------------- //
@@ -193,11 +169,6 @@ export interface RouterCtrlState {
   }
 }
 
-// -- ClientCtrl ------------------------------------------- //
-export interface ClientCtrlState {
-  ethereumClient?: EthereumClient
-}
-
 // -- ThemeCtrl -------------------------------------------- //
 export interface ThemeCtrlState {
   themeVariables?: {
@@ -267,13 +238,6 @@ export interface ThemeCtrlState {
     '--wcm-overlay-backdrop-filter'?: string
   }
   themeMode?: 'dark' | 'light'
-}
-
-// -- WcConnectionCtrl ------------------------------------- //
-export interface WcConnectionCtrlState {
-  pairingEnabled: boolean
-  pairingUri: string
-  pairingError: boolean
 }
 
 // -- EventsCrrl ------------------------------------------- //

@@ -8,7 +8,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-modal-header')
-export class W3mModalHeader extends LitElement {
+export class WcmModalHeader extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -50,6 +50,6 @@ export class W3mModalHeader extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-modal-header': W3mModalHeader
+    'wcm-modal-header': WcmModalHeader
   }
 }

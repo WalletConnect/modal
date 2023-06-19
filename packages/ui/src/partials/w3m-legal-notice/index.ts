@@ -5,7 +5,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-legal-notice')
-export class W3mLegalNotice extends LitElement {
+export class WcmLegalNotice extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- render ------------------------------------------------------- //
@@ -40,6 +40,6 @@ export class W3mLegalNotice extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-legal-notice': W3mLegalNotice
+    'wcm-legal-notice': WcmLegalNotice
   }
 }

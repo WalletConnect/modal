@@ -6,7 +6,7 @@ import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
 
 @customElement('wcm-wallet-image')
-export class W3mWalletImage extends LitElement {
+export class WcmWalletImage extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -34,6 +34,6 @@ export class W3mWalletImage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-wallet-image': W3mWalletImage
+    'wcm-wallet-image': WcmWalletImage
   }
 }

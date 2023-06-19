@@ -4,7 +4,7 @@ import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
 @customElement('wcm-spinner')
-export class W3mSpinner extends LitElement {
+export class WcmSpinner extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- render ------------------------------------------------------- //
@@ -19,6 +19,6 @@ export class W3mSpinner extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-spinner': W3mSpinner
+    'wcm-spinner': WcmSpinner
   }
 }

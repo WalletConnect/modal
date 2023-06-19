@@ -8,7 +8,7 @@ import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
 
 @customElement('wcm-desktop-wallet-selection')
-export class W3mDesktopWalletSelection extends LitElement {
+export class WcmDesktopWalletSelection extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- render ------------------------------------------------------- //
@@ -89,6 +89,6 @@ export class W3mDesktopWalletSelection extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-desktop-wallet-selection': W3mDesktopWalletSelection
+    'wcm-desktop-wallet-selection': WcmDesktopWalletSelection
   }
 }

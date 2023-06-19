@@ -3,9 +3,7 @@ import { RouterCtrl } from '../controllers/RouterCtrl'
 export const CoreUtil = {
   WALLETCONNECT_DEEPLINK_CHOICE: 'WALLETCONNECT_DEEPLINK_CHOICE',
 
-  W3M_VERSION: 'W3M_VERSION',
-
-  W3M_PREFER_INJECTED_URL_FLAG: 'w3mPreferInjected',
+  WCM_VERSION: 'WCM_VERSION',
 
   RECOMMENDED_WALLET_AMOUNT: 9,
 
@@ -99,7 +97,7 @@ export const CoreUtil = {
 
   setWeb3ModalVersionInStorage() {
     if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(CoreUtil.W3M_VERSION, process.env.ROLLUP_W3M_VERSION ?? 'UNKNOWN')
+      localStorage.setItem(CoreUtil.WCM_VERSION, process.env.ROLLUP_WCM_VERSION ?? 'UNKNOWN')
     }
   },
 
@@ -119,15 +117,5 @@ export const CoreUtil = {
     }
 
     return routerData
-  },
-
-  isPreferInjectedFlag() {
-    if (typeof location !== 'undefined') {
-      const queryParams = new URLSearchParams(location.search)
-
-      return queryParams.has(CoreUtil.W3M_PREFER_INJECTED_URL_FLAG)
-    }
-
-    return false
   }
 }

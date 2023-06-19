@@ -6,7 +6,7 @@ import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
 
 @customElement('wcm-network-image')
-export class W3mNetworkImage extends LitElement {
+export class WcmNetworkImage extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
@@ -34,6 +34,6 @@ export class W3mNetworkImage extends LitElement {
 
 declare global {
   interface HTMLElementTagNameMap {
-    'wcm-network-image': W3mNetworkImage
+    'wcm-network-image': WcmNetworkImage
   }
 }
