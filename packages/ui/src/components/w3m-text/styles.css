@@ -1,0 +1,87 @@
+span {
+  font-style: normal;
+  font-family: var(--wcm-font-family);
+  font-feature-settings: var(--wcm-font-feature-settings);
+}
+
+.wcm-xsmall-bold {
+  font-family: var(--wcm-text-xsmall-bold-font-family);
+  font-weight: var(--wcm-text-xsmall-bold-weight);
+  font-size: var(--wcm-text-xsmall-bold-size);
+  line-height: var(--wcm-text-xsmall-bold-line-height);
+  letter-spacing: var(--wcm-text-xsmall-bold-letter-spacing);
+  text-transform: var(--wcm-text-xsmall-bold-text-transform);
+}
+
+.wcm-xsmall-regular {
+  font-family: var(--wcm-text-xsmall-regular-font-family);
+  font-weight: var(--wcm-text-xsmall-regular-weight);
+  font-size: var(--wcm-text-xsmall-regular-size);
+  line-height: var(--wcm-text-xsmall-regular-line-height);
+  letter-spacing: var(--wcm-text-xsmall-regular-letter-spacing);
+  text-transform: var(--wcm-text-xsmall-regular-text-transform);
+}
+
+.wcm-small-thin {
+  font-family: var(--wcm-text-small-thin-font-family);
+  font-weight: var(--wcm-text-small-thin-weight);
+  font-size: var(--wcm-text-small-thin-size);
+  line-height: var(--wcm-text-small-thin-line-height);
+  letter-spacing: var(--wcm-text-small-thin-letter-spacing);
+  text-transform: var(--wcm-text-small-thin-text-transform);
+}
+
+.wcm-small-regular {
+  font-family: var(--wcm-text-small-regular-font-family);
+  font-weight: var(--wcm-text-small-regular-weight);
+  font-size: var(--wcm-text-small-regular-size);
+  line-height: var(--wcm-text-small-regular-line-height);
+  letter-spacing: var(--wcm-text-small-regular-letter-spacing);
+  text-transform: var(--wcm-text-small-regular-text-transform);
+}
+
+.wcm-medium-regular {
+  font-family: var(--wcm-text-medium-regular-font-family);
+  font-weight: var(--wcm-text-medium-regular-weight);
+  font-size: var(--wcm-text-medium-regular-size);
+  line-height: var(--wcm-text-medium-regular-line-height);
+  letter-spacing: var(--wcm-text-medium-regular-letter-spacing);
+  text-transform: var(--wcm-text-medium-regular-text-transform);
+}
+
+.wcm-big-bold {
+  font-family: var(--wcm-text-big-bold-font-family);
+  font-weight: var(--wcm-text-big-bold-weight);
+  font-size: var(--wcm-text-big-bold-size);
+  line-height: var(--wcm-text-big-bold-line-height);
+  letter-spacing: var(--wcm-text-big-bold-letter-spacing);
+  text-transform: var(--wcm-text-big-bold-text-transform);
+}
+
+:host(*) {
+  color: var(--wcm-color-fg-1);
+}
+
+.wcm-color-primary {
+  color: var(--wcm-color-fg-1);
+}
+
+.wcm-color-secondary {
+  color: var(--wcm-color-fg-2);
+}
+
+.wcm-color-tertiary {
+  color: var(--wcm-color-fg-3);
+}
+
+.wcm-color-inverse {
+  color: var(--wcm-accent-fill-color);
+}
+
+.wcm-color-accnt {
+  color: var(--wcm-accent-color);
+}
+
+.wcm-color-error {
+  color: var(--wcm-error-color);
+}

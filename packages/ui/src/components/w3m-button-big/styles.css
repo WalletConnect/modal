@@ -1,0 +1,49 @@
+:host {
+  display: inline-block;
+}
+
+button {
+  padding: 0 15px 1px;
+  height: 40px;
+  border-radius: var(--wcm-button-border-radius);
+  color: var(--wcm-accent-fill-color);
+  background-color: var(--wcm-accent-color);
+}
+
+button::after {
+  content: '';
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  position: absolute;
+  background-color: transparent;
+  border-radius: inherit;
+  transition: background-color 0.2s ease;
+  border: 1px solid var(--wcm-color-overlay);
+}
+
+button:active::after {
+  background-color: var(--wcm-color-overlay);
+}
+
+button:disabled {
+  padding-bottom: 0;
+  background-color: var(--wcm-color-bg-3);
+  color: var(--wcm-color-fg-3);
+}
+
+.wcm-secondary {
+  color: var(--wcm-accent-color);
+  background-color: transparent;
+}
+
+.wcm-secondary::after {
+  display: none;
+}
+
+@media (hover: hover) {
+  button:hover::after {
+    background-color: var(--wcm-color-overlay);
+  }
+}

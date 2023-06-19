@@ -1,0 +1,42 @@
+.wcm-info-text {
+  margin: 5px 0 15px;
+  max-width: 320px;
+  text-align: center;
+}
+
+.wcm-wallet-item {
+  margin: 0 -20px 0 0;
+  padding-right: 20px;
+  display: flex;
+  align-items: center;
+  border-bottom: 1px solid var(--wcm-color-bg-2);
+}
+
+.wcm-wallet-item:last-child {
+  margin-bottom: -20px;
+  border-bottom: none;
+}
+
+.wcm-wallet-content {
+  margin-left: 20px;
+  height: 60px;
+  display: flex;
+  flex: 1;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wcm-footer-actions {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  border-top: 1px solid var(--wcm-color-bg-2);
+}
+
+wcm-wallet-image {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+}

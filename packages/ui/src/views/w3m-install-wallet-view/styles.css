@@ -1,0 +1,15 @@
+wcm-info-footer {
+  flex-direction: column;
+  align-items: center;
+  display: flex;
+  width: 100%;
+  padding: 5px 0;
+}
+
+wcm-text {
+  text-align: center;
+}
+
+wcm-button {
+  margin-top: 15px;
+}

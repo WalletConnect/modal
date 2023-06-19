@@ -1,0 +1,9 @@
+.wcm-router {
+  overflow: hidden;
+  will-change: transform;
+}
+
+.wcm-content {
+  display: flex;
+  flex-direction: column;
+}

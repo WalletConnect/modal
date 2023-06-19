@@ -1,0 +1,39 @@
+button {
+  padding: 5px;
+  border-radius: var(--wcm-button-hover-highlight-border-radius);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 80px;
+  height: 90px;
+  position: relative;
+}
+
+wcm-network-image {
+  width: 54px;
+  height: 59px;
+}
+
+wcm-text {
+  width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  text-align: center;
+  margin-top: 5px;
+}
+
+button:active {
+  background-color: var(--wcm-color-overlay);
+}
+
+.wcm-unsupported {
+  opacity: 0.3;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background-color: var(--wcm-color-overlay);
+  }
+}

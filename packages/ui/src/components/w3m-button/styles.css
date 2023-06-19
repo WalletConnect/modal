@@ -1,0 +1,77 @@
+button {
+  border-radius: var(--wcm-secondary-button-border-radius);
+  height: 28px;
+  padding: 0 10px;
+  background-color: var(--wcm-accent-color);
+}
+
+button path {
+  fill: var(--wcm-accent-fill-color);
+}
+
+button::after {
+  border-radius: inherit;
+  border: 1px solid var(--wcm-color-overlay);
+}
+
+button:disabled::after {
+  background-color: transparent;
+}
+
+.wcm-icon-left svg {
+  margin-right: 5px;
+}
+
+.wcm-icon-right svg {
+  margin-left: 5px;
+}
+
+button:active::after {
+  background-color: var(--wcm-color-overlay);
+}
+
+.wcm-ghost,
+.wcm-ghost:active::after,
+.wcm-outline {
+  background-color: transparent;
+}
+
+.wcm-ghost:active {
+  opacity: 0.5;
+}
+
+@media (hover: hover) {
+  button:hover::after {
+    background-color: var(--wcm-color-overlay);
+  }
+
+  .wcm-ghost:hover::after {
+    background-color: transparent;
+  }
+
+  .wcm-ghost:hover {
+    opacity: 0.5;
+  }
+}
+
+button:disabled {
+  background-color: var(--wcm-color-bg-3);
+  pointer-events: none;
+}
+
+.wcm-ghost::after {
+  border-color: transparent;
+}
+
+.wcm-ghost path {
+  fill: var(--wcm-color-fg-2);
+}
+
+.wcm-outline path {
+  fill: var(--wcm-accent-color);
+}
+
+.wcm-outline:disabled {
+  background-color: transparent;
+  opacity: 0.5;
+}

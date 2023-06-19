@@ -1,0 +1,11 @@
+{
+  "name": "core",
+  "version": "2.4.7",
+  "scripts": {
+    "typecheck": "tsc --noEmit"
+  },
+  "dependencies": {
+    "buffer": "6.0.3",
+    "valtio": "1.10.5"
+  }
+}
