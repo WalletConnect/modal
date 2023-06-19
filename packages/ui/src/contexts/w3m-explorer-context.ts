@@ -1,7 +1,6 @@
 import { ConfigCtrl, ExplorerCtrl, OptionsCtrl, ToastCtrl } from '#core'
 import { LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
-import { DataUtil } from '../utils/DataUtil'
 import { UiUtil } from '../utils/UiUtil'
 
 @customElement('wcm-explorer-context')
@@ -30,15 +29,11 @@ export class WcmExplorerContext extends LitElement {
 
   private async preloadListings() {
     if (ConfigCtrl.state.enableExplorer) {
-      const { chains } = OptionsCtrl.state
-      await Promise.all([ExplorerCtrl.getRecomendedWallets(), ExplorerCtrl.getInjectedWallets()])
+      await ExplorerCtrl.getRecomendedWallets()
       OptionsCtrl.setIsDataLoaded(true)
       const { recomendedWallets } = ExplorerCtrl.state
-      const injectedWallets = DataUtil.installedInjectedWallets()
-      const chainsImgs = chains?.map(chain => UiUtil.getChainIcon(chain.id)) ?? []
       const walletImgs = recomendedWallets.map(wallet => UiUtil.getWalletIcon(wallet))
-      const injectedImgs = injectedWallets.map(wallet => UiUtil.getWalletIcon(wallet))
-      await this.loadImages([...chainsImgs, ...walletImgs, ...injectedImgs])
+      await this.loadImages(walletImgs)
     } else {
       OptionsCtrl.setIsDataLoaded(true)
     }

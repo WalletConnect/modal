@@ -2,8 +2,8 @@ export interface MobileWallet {
   id: string
   name: string
   links: {
-    universal: string
-    native?: string
+    native: string
+    universal?: string
   }
 }
 
@@ -12,20 +12,14 @@ export interface DesktopWallet {
   name: string
   links: {
     native: string
-    universal: string
+    universal?: string
   }
-}
-
-export interface Chain {
-  id: number
-  name: string
 }
 
 // -- ConfigCtrl ------------------------------------------- //
 export interface ConfigCtrlState {
   projectId: string
-  standaloneChains?: string[]
-  defaultChain?: Chain
+  chains?: string[]
   mobileWallets?: MobileWallet[]
   desktopWallets?: DesktopWallet[]
   walletImages?: Record<string, string>
@@ -44,9 +38,8 @@ export interface ModalCtrlState {
 
 // -- OptionsCtrl --------------------------------------- //
 export interface OptionsCtrlState {
-  selectedChain?: Chain
-  standaloneChains?: string[]
-  standaloneUri?: string
+  chains?: string[]
+  walletConnectUri?: string
   isAuth: boolean
   isCustomDesktop: boolean
   isCustomMobile: boolean
@@ -57,7 +50,6 @@ export interface OptionsCtrlState {
 // -- ExplorerCtrl ------------------------------------------- //
 export interface ExplorerCtrlState {
   wallets: ListingResponse & { page: number }
-  injectedWallets: Listing[]
   search: ListingResponse & { page: number }
   recomendedWallets: Listing[]
 }
@@ -91,10 +83,6 @@ export interface Listing {
     edge?: string
     opera?: string
   }
-  injected: {
-    injected_id: string
-    namespace: string
-  }[]
   mobile: {
     native: string
     universal: string
@@ -119,18 +107,14 @@ export interface ToastCtrlState {
 
 // -- RouterCtrl --------------------------------------------- //
 export type RouterView =
-  | 'Account'
   | 'ConnectWallet'
   | 'DesktopConnecting'
   | 'GetWallet'
   | 'Help'
-  | 'InjectedConnecting'
   | 'InstallWallet'
   | 'MobileConnecting'
   | 'MobileQrcodeConnecting'
   | 'Qrcode'
-  | 'SelectNetwork'
-  | 'SwitchNetwork'
   | 'WalletExplorer'
   | 'WebConnecting'
 
@@ -144,10 +128,6 @@ export interface WalletData {
     ios?: string
     android?: string
   }
-  injected?: {
-    injected_id?: string
-    namespace?: string
-  }[]
   mobile?: {
     native?: string
     universal?: string
@@ -158,14 +138,11 @@ export interface WalletData {
   }
 }
 
-export type SwitchNetworkData = Chain
-
 export interface RouterCtrlState {
   history: RouterView[]
   view: RouterView
   data?: {
     Wallet?: WalletData
-    SwitchNetwork?: SwitchNetworkData
   }
 }
 
@@ -243,22 +220,10 @@ export interface ThemeCtrlState {
 // -- EventsCrrl ------------------------------------------- //
 export type ModalEventData =
   | {
-      name: 'ACCOUNT_BUTTON'
-    }
-  | {
-      name: 'ACCOUNT_CONNECTED'
-    }
-  | {
-      name: 'ACCOUNT_DISCONNECTED'
-    }
-  | {
       name: 'CONNECT_BUTTON'
     }
   | {
       name: 'DISCONNECT_BUTTON'
-    }
-  | {
-      name: 'NETWORK_BUTTON'
     }
   | {
       name: 'WALLET_BUTTON'

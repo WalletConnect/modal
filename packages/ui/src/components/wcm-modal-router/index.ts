@@ -58,10 +58,6 @@ export class WcmModalRouter extends LitElement {
     switch (this.view) {
       case 'ConnectWallet':
         return html`<wcm-connect-wallet-view></wcm-connect-wallet-view>`
-      case 'SelectNetwork':
-        return html`<wcm-select-network-view></wcm-select-network-view>`
-      case 'InjectedConnecting':
-        return html`<wcm-injected-connecting-view></wcm-injected-connecting-view>`
       case 'DesktopConnecting':
         return html`<wcm-desktop-connecting-view></wcm-desktop-connecting-view>`
       case 'MobileConnecting':
@@ -78,10 +74,6 @@ export class WcmModalRouter extends LitElement {
         return html`<wcm-qrcode-view></wcm-qrcode-view>`
       case 'Help':
         return html`<wcm-help-view></wcm-help-view>`
-      case 'Account':
-        return html`<wcm-account-view></wcm-account-view>`
-      case 'SwitchNetwork':
-        return html`<wcm-switch-network-view></wcm-switch-network-view>`
       case 'InstallWallet':
         return html`<wcm-install-wallet-view></wcm-install-wallet-view>`
       default:

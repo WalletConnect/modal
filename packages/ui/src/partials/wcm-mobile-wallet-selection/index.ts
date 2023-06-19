@@ -1,4 +1,4 @@
-import { ConfigCtrl, OptionsCtrl, RouterCtrl } from '#core'
+import { ConfigCtrl, RouterCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { SvgUtil } from '../../utils/SvgUtil'
@@ -17,25 +17,12 @@ export class WcmMobileWalletSelection extends LitElement {
 
   // -- render ------------------------------------------------------- //
   protected render() {
-    const { isStandalone } = OptionsCtrl.state
     const { explorerExcludedWalletIds, enableExplorer } = ConfigCtrl.state
     const isExplorerWallets = explorerExcludedWalletIds !== 'ALL' && enableExplorer
     const manualTemplate = TemplateUtil.manualWalletsTemplate()
     const recomendedTemplate = TemplateUtil.recomendedWalletsTemplate()
-    const externalTemplate = TemplateUtil.externalWalletsTemplate()
     const recentTemplate = TemplateUtil.recentWalletTemplate()
-    const injectedWallets = TemplateUtil.installedInjectedWalletsTemplate()
-
     let templates = [recentTemplate, ...manualTemplate, ...recomendedTemplate]
-    if (!isStandalone) {
-      templates = [
-        ...injectedWallets,
-        recentTemplate,
-        ...externalTemplate,
-        ...manualTemplate,
-        ...recomendedTemplate
-      ]
-    }
     templates = templates.filter(Boolean)
 
     const isViewAll = templates.length > 8 || isExplorerWallets

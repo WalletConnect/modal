@@ -1,6 +1,7 @@
-import { CoreUtil, OptionsCtrl, WcConnectionCtrl } from '#core'
+import { CoreUtil, OptionsCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
@@ -17,17 +18,9 @@ export class WcmMobileConnectingView extends LitElement {
   public constructor() {
     super()
     this.openMobileApp()
-    this.unwatchConnection = WcConnectionCtrl.subscribe(connectionState => {
-      this.isError = connectionState.pairingError
-    })
-  }
-
-  public disconnectedCallback() {
-    this.unwatchConnection?.()
   }
 
   // -- private ------------------------------------------------------ //
-  private readonly unwatchConnection?: () => void = undefined
 
   private onFormatAndRedirect(uri: string, forceUniversalUrl = false) {
     const { mobile, name } = CoreUtil.getWalletRouterData()
@@ -44,15 +37,11 @@ export class WcmMobileConnectingView extends LitElement {
   }
 
   private openMobileApp(forceUniversalUrl = false) {
-    WcConnectionCtrl.setPairingError(false)
-    const { standaloneUri } = OptionsCtrl.state
-    const { pairingUri } = WcConnectionCtrl.state
+    const { walletConnectUri } = OptionsCtrl.state
     const routerData = CoreUtil.getWalletRouterData()
     UiUtil.setRecentWallet(routerData)
-    if (standaloneUri) {
-      this.onFormatAndRedirect(standaloneUri, forceUniversalUrl)
-    } else {
-      this.onFormatAndRedirect(pairingUri, forceUniversalUrl)
+    if (walletConnectUri) {
+      this.onFormatAndRedirect(walletConnectUri, forceUniversalUrl)
     }
   }
 
@@ -75,7 +64,7 @@ export class WcmMobileConnectingView extends LitElement {
       <wcm-modal-content>
         <wcm-connector-waiting
           walletId=${id}
-          imageId=${image_id}
+          imageId=${ifDefined(image_id)}
           label="Tap 'Open' to continue…"
           .isError=${this.isError}
         ></wcm-connector-waiting>
@@ -102,7 +91,7 @@ export class WcmMobileConnectingView extends LitElement {
 
       <wcm-info-footer class="wcm-app-store">
         <div>
-          <wcm-wallet-image walletId=${id} imageId=${image_id}></wcm-wallet-image>
+          <wcm-wallet-image walletId=${id} imageId=${ifDefined(image_id)}></wcm-wallet-image>
           <wcm-text>${`Get ${name}`}</wcm-text>
         </div>
         <wcm-button

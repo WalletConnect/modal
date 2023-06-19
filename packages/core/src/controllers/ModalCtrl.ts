@@ -5,9 +5,9 @@ import { RouterCtrl } from './RouterCtrl'
 
 // -- types -------------------------------------------------------- //
 export interface OpenOptions {
-  uri?: string
-  standaloneChains?: string[]
-  route?: 'Account' | 'ConnectWallet' | 'Help' | 'SelectNetwork'
+  uri: string
+  chains?: string[]
+  route?: 'ConnectWallet' | 'Help'
 }
 
 // -- initial state ------------------------------------------------ //
@@ -27,8 +27,8 @@ export const ModalCtrl = {
     return new Promise<void>(resolve => {
       const { isUiLoaded, isDataLoaded } = OptionsCtrl.state
 
-      OptionsCtrl.setStandaloneUri(options?.uri)
-      OptionsCtrl.setStandaloneChains(options?.standaloneChains)
+      OptionsCtrl.setWalletConnectUri(options?.uri)
+      OptionsCtrl.setChains(options?.chains)
       RouterCtrl.reset('ConnectWallet')
 
       if (options?.route) {

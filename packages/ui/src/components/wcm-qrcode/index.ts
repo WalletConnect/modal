@@ -2,6 +2,7 @@ import { ThemeCtrl } from '#core'
 import { html, LitElement, svg } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { QrCodeUtil } from '../../utils/QrCode'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
@@ -41,9 +42,9 @@ export class WcmQrCode extends LitElement {
         ${this.walletId || this.imageUrl
           ? html`
               <wcm-wallet-image
-                walletId=${this.walletId}
-                imageId=${this.imageId}
-                imageUrl=${this.imageUrl}
+                walletId=${ifDefined(this.walletId)}
+                imageId=${ifDefined(this.imageId)}
+                imageUrl=${ifDefined(this.imageUrl)}
               ></wcm-wallet-image>
             `
           : SvgUtil.WALLET_CONNECT_ICON_COLORED}

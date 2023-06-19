@@ -9,10 +9,9 @@ const state = proxy<ConfigCtrlState>({
   mobileWallets: undefined,
   desktopWallets: undefined,
   walletImages: undefined,
-  standaloneChains: undefined,
+  chains: undefined,
   enableAuthMode: false,
   enableExplorer: true,
-  defaultChain: undefined,
   explorerExcludedWalletIds: undefined,
   explorerRecommendedWalletIds: undefined,
   termsOfServiceUrl: undefined,
@@ -29,14 +28,10 @@ export const ConfigCtrl = {
 
   setConfig(config: ConfigCtrlState) {
     EventsCtrl.initialize()
-    OptionsCtrl.setStandaloneChains(config.standaloneChains)
+    OptionsCtrl.setChains(config.chains)
     OptionsCtrl.setIsAuth(Boolean(config.enableAuthMode))
     OptionsCtrl.setIsCustomMobile(Boolean(config.mobileWallets?.length))
     OptionsCtrl.setIsCustomDesktop(Boolean(config.desktopWallets?.length))
-
-    if (config.defaultChain) {
-      OptionsCtrl.setSelectedChain(config.defaultChain)
-    }
 
     CoreUtil.setModalVersionInStorage()
 

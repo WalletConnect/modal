@@ -1,6 +1,7 @@
-import { OptionsCtrl, WcConnectionCtrl } from '#core'
+import { OptionsCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement, property, state } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
@@ -18,23 +19,12 @@ export class WcmWalletConnectQr extends LitElement {
   public constructor() {
     super()
     setTimeout(() => {
-      const { pairingUri } = WcConnectionCtrl.state
-      const { standaloneUri } = OptionsCtrl.state
-      this.uri = standaloneUri ?? pairingUri
+      const { walletConnectUri } = OptionsCtrl.state
+      this.uri = walletConnectUri
     }, 0)
-    this.unwatchWcConnection = WcConnectionCtrl.subscribe(connection => {
-      if (connection.pairingUri) {
-        this.uri = connection.pairingUri
-      }
-    })
-  }
-
-  public disconnectedCallback() {
-    this.unwatchWcConnection?.()
   }
 
   // -- private ------------------------------------------------------ //
-  private readonly unwatchWcConnection?: () => void = undefined
 
   private get overlayEl(): HTMLDivElement {
     return UiUtil.getShadowRootElement(this, '.wcm-qr-container') as HTMLDivElement
@@ -48,8 +38,8 @@ export class WcmWalletConnectQr extends LitElement {
           ? html`<wcm-qrcode
               size="${this.overlayEl.offsetWidth}"
               uri=${this.uri}
-              walletId=${this.walletId}
-              imageId=${this.imageId}
+              walletId=${ifDefined(this.walletId)}
+              imageId=${ifDefined(this.imageId)}
             ></wcm-qrcode>`
           : html`<wcm-spinner></wcm-spinner>`}
       </div>

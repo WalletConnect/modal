@@ -108,14 +108,5 @@ export const CoreUtil = {
     }
 
     return routerData
-  },
-
-  getSwitchNetworkRouterData() {
-    const routerData = RouterCtrl.state.data?.SwitchNetwork
-    if (!routerData) {
-      throw new Error('Missing "SwitchNetwork" view data')
-    }
-
-    return routerData
   }
 }

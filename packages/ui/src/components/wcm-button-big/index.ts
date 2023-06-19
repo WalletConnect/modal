@@ -11,7 +11,7 @@ export class WcmButtonBig extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
-  @property() public disabled? = false
+  @property({ type: Boolean }) public disabled? = false
   @property() public variant?: Variant = 'primary'
 
   // -- render ------------------------------------------------------- //

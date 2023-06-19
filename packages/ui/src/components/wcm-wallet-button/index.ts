@@ -1,6 +1,7 @@
 import { EventsCtrl } from '#core'
 import { html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
@@ -15,8 +16,8 @@ export class WcmWalletButton extends LitElement {
   @property() public walletId = ''
   @property() public label?: string = undefined
   @property() public imageId?: string = undefined
-  @property() public installed? = false
-  @property() public recent? = false
+  @property({ type: Boolean }) public installed? = false
+  @property({ type: Boolean }) public recent? = false
 
   // -- private ------------------------------------------------------ //
   private sublabelTemplate() {
@@ -43,7 +44,10 @@ export class WcmWalletButton extends LitElement {
     return html`
       <button @click=${this.handleClick.bind(this)}>
         <div>
-          <wcm-wallet-image walletId=${this.walletId} imageId=${this.imageId}></wcm-wallet-image>
+          <wcm-wallet-image
+            walletId=${this.walletId}
+            imageId=${ifDefined(this.imageId)}
+          ></wcm-wallet-image>
           <wcm-text variant="xsmall-regular">
             ${this.label ?? UiUtil.getWalletName(this.name, true)}
           </wcm-text>

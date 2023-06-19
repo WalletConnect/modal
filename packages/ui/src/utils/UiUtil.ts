@@ -1,15 +1,5 @@
 import type { WalletData } from '#core'
-import {
-  ClientCtrl,
-  ConfigCtrl,
-  CoreUtil,
-  ExplorerCtrl,
-  ModalCtrl,
-  OptionsCtrl,
-  RouterCtrl,
-  ToastCtrl,
-  WcConnectionCtrl
-} from '#core'
+import { ConfigCtrl, CoreUtil, ExplorerCtrl, OptionsCtrl, RouterCtrl, ToastCtrl } from '#core'
 import type { LitElement } from 'lit'
 
 export const UiUtil = {
@@ -79,8 +69,7 @@ export const UiUtil = {
   },
 
   handleMobileLinking(wallet: WalletData) {
-    const { standaloneUri } = OptionsCtrl.state
-    const { pairingUri } = WcConnectionCtrl.state
+    const { walletConnectUri } = OptionsCtrl.state
     const { mobile, name } = wallet
     const nativeUrl = mobile?.native
     const universalUrl = mobile?.universal
@@ -97,50 +86,26 @@ export const UiUtil = {
       CoreUtil.openHref(href, '_self')
     }
 
-    if (standaloneUri) {
-      onRedirect(standaloneUri)
-    } else {
-      onRedirect(pairingUri)
+    if (walletConnectUri) {
+      onRedirect(walletConnectUri)
     }
   },
 
   handleAndroidLinking() {
-    const { standaloneUri } = OptionsCtrl.state
-    const { pairingUri } = WcConnectionCtrl.state
+    const { walletConnectUri } = OptionsCtrl.state
 
-    if (standaloneUri) {
-      CoreUtil.setWalletConnectAndroidDeepLink(standaloneUri)
-      CoreUtil.openHref(standaloneUri, '_self')
-    } else {
-      CoreUtil.setWalletConnectAndroidDeepLink(pairingUri)
-      CoreUtil.openHref(pairingUri, '_self')
+    if (walletConnectUri) {
+      CoreUtil.setWalletConnectAndroidDeepLink(walletConnectUri)
+      CoreUtil.openHref(walletConnectUri, '_self')
     }
   },
 
   async handleUriCopy() {
-    const { standaloneUri } = OptionsCtrl.state
-    const { pairingUri } = WcConnectionCtrl.state
-    if (standaloneUri) {
-      await navigator.clipboard.writeText(standaloneUri)
-    } else {
-      await navigator.clipboard.writeText(pairingUri)
+    const { walletConnectUri } = OptionsCtrl.state
+    if (walletConnectUri) {
+      await navigator.clipboard.writeText(walletConnectUri)
     }
     ToastCtrl.openToast('Link copied', 'success')
-  },
-
-  async handleConnectorConnection(id: string, onError?: () => void) {
-    try {
-      const { selectedChain } = OptionsCtrl.state
-      await ClientCtrl.client().connectConnector(id, selectedChain?.id)
-      ModalCtrl.close()
-    } catch (err) {
-      console.error(err)
-      if (onError) {
-        onError()
-      } else {
-        ToastCtrl.openToast(UiUtil.getErrorMessage(err), 'error')
-      }
-    }
   },
 
   getCustomImageUrls() {
@@ -156,42 +121,6 @@ export const UiUtil = {
     }
 
     return `${value.substring(0, 4)}...${value.substring(value.length - 4)}`
-  },
-
-  generateAvatarColors(address: string) {
-    // eslint-disable-next-line require-unicode-regexp
-    const seedArr = address.match(/.{1,7}/g)?.splice(0, 5)
-    const colors: string[] = []
-
-    seedArr?.forEach(seed => {
-      let hash = 0
-      for (let i = 0; i < seed.length; i += 1) {
-        // eslint-disable-next-line no-bitwise
-        hash = seed.charCodeAt(i) + ((hash << 5) - hash)
-        // eslint-disable-next-line operator-assignment, no-bitwise
-        hash = hash & hash
-      }
-
-      const rgb = [0, 0, 0]
-      for (let i = 0; i < 3; i += 1) {
-        // eslint-disable-next-line no-bitwise
-        const value = (hash >> (i * 8)) & 255
-        rgb[i] = value
-      }
-      colors.push(`rgb(${rgb[0]}, ${rgb[1]}, ${rgb[2]})`)
-    })
-
-    const root: HTMLElement | null = document.querySelector(':root')
-    if (root) {
-      const variables = {
-        '--wcm-color-av-1': colors[0],
-        '--wcm-color-av-2': colors[1],
-        '--wcm-color-av-3': colors[2],
-        '--wcm-color-av-4': colors[3],
-        '--wcm-color-av-5': colors[4]
-      }
-      Object.entries(variables).forEach(([key, val]) => root.style.setProperty(key, val))
-    }
   },
 
   setRecentWallet(wallet: WalletData) {

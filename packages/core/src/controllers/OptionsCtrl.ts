@@ -3,9 +3,8 @@ import type { OptionsCtrlState } from '../types/controllerTypes'
 
 // -- initial state ------------------------------------------------ //
 const state = proxy<OptionsCtrlState>({
-  selectedChain: undefined,
-  standaloneChains: undefined,
-  standaloneUri: undefined,
+  chains: undefined,
+  walletConnectUri: undefined,
   isAuth: false,
   isCustomDesktop: false,
   isCustomMobile: false,
@@ -21,16 +20,12 @@ export const OptionsCtrl = {
     return valtioSub(state, () => callback(state))
   },
 
-  setStandaloneChains(standaloneChains: OptionsCtrlState['standaloneChains']) {
-    state.standaloneChains = standaloneChains
+  setChains(chains: OptionsCtrlState['chains']) {
+    state.chains = chains
   },
 
-  setStandaloneUri(standaloneUri: OptionsCtrlState['standaloneUri']) {
-    state.standaloneUri = standaloneUri
-  },
-
-  setSelectedChain(selectedChain: OptionsCtrlState['selectedChain']) {
-    state.selectedChain = selectedChain
+  setWalletConnectUri(walletConnectUri: OptionsCtrlState['walletConnectUri']) {
+    state.walletConnectUri = walletConnectUri
   },
 
   setIsCustomDesktop(isCustomDesktop: OptionsCtrlState['isCustomDesktop']) {

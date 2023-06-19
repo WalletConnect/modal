@@ -2,6 +2,7 @@ import { ThemeCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 
@@ -12,8 +13,8 @@ export class WcmConnectorWaiting extends LitElement {
   // -- state & properties ------------------------------------------- //
   @property() public walletId?: string = undefined
   @property() public imageId?: string = undefined
-  @property() public isError = false
-  @property() public isStale = false
+  @property({ type: Boolean }) public isError = false
+  @property({ type: Boolean }) public isStale = false
   @property() public label = ''
 
   // -- private ------------------------------------------------------ //
@@ -59,7 +60,10 @@ export class WcmConnectorWaiting extends LitElement {
     return html`
       <div class=${classMap(classes)}>
         ${this.svgLoaderTemplate()}
-        <wcm-wallet-image walletId=${this.walletId} imageId=${this.imageId}></wcm-wallet-image>
+        <wcm-wallet-image
+          walletId=${ifDefined(this.walletId)}
+          imageId=${ifDefined(this.imageId)}
+        ></wcm-wallet-image>
       </div>
       <wcm-text variant="medium-regular" color=${this.isError ? 'error' : 'primary'}>
         ${this.isError ? 'Connection declined' : this.label}

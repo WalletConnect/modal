@@ -53,7 +53,7 @@ export class WcmWalletExplorerView extends LitElement {
   }
 
   private async fetchWallets() {
-    const { wallets, search, injectedWallets } = ExplorerCtrl.state
+    const { wallets, search } = ExplorerCtrl.state
     const { listings, total, page } = this.search ? search : wallets
 
     if (
@@ -62,19 +62,17 @@ export class WcmWalletExplorerView extends LitElement {
     ) {
       try {
         this.loading = true
-        const chains = OptionsCtrl.state.standaloneChains?.join(',')
+        const chains = OptionsCtrl.state.chains?.join(',')
         const { listings: newListings } = await ExplorerCtrl.getWallets({
           page: this.firstFetch ? 1 : page + 1,
           entries: PAGE_ENTRIES,
           search: this.search,
-          version: OptionsCtrl.state.walletConnectVersion,
+          version: 2,
           chains
         })
         const explorerImages = newListings.map(wallet => UiUtil.getWalletIcon(wallet))
-        const extensionImages = injectedWallets.map(wallet => UiUtil.getWalletIcon(wallet))
         await Promise.all([
           ...explorerImages.map(async url => UiUtil.preloadImage(url)),
-          ...extensionImages.map(async url => UiUtil.preloadImage(url)),
           CoreUtil.wait(300)
         ])
         this.endReached = this.isLastPage()
@@ -121,15 +119,11 @@ export class WcmWalletExplorerView extends LitElement {
     const { listings } = this.search ? search : wallets
     const isLoading = this.loading && !listings.length
     const isSearch = this.search.length >= 3
-    let extensions = TemplateUtil.injectedWalletsTemplate()
     let manualWallets = TemplateUtil.manualWalletsTemplate()
     let recomendedWallets = TemplateUtil.recomendedWalletsTemplate(true)
 
     // If search is active, we only show results matching query
     if (isSearch) {
-      extensions = extensions.filter(({ values }) =>
-        UiUtil.caseSafeIncludes(values[0] as string, this.search)
-      )
       manualWallets = manualWallets.filter(({ values }) =>
         UiUtil.caseSafeIncludes(values[0] as string, this.search)
       )
@@ -138,17 +132,7 @@ export class WcmWalletExplorerView extends LitElement {
       )
     }
 
-    // Deduplicate extension wallets from recomended wallets
-    extensions = extensions.filter(
-      ext =>
-        !recomendedWallets.find(rcm =>
-          UiUtil.caseSafeIncludes(ext.values[0] as string, rcm.values[0] as string)
-        )
-    )
-
-    const isEmpty =
-      !this.loading && !listings.length && !extensions.length && !recomendedWallets.length
-    const iterator = Math.max(extensions.length, listings.length)
+    const isEmpty = !this.loading && !listings.length && !recomendedWallets.length
     const classes = {
       'wcm-loading': isLoading,
       'wcm-end-reached': this.endReached || !this.loading,
@@ -162,19 +146,18 @@ export class WcmWalletExplorerView extends LitElement {
 
       <wcm-modal-content class=${classMap(classes)}>
         <div class="wcm-grid">
-          ${isLoading ? null : recomendedWallets}
+          ${isLoading ? null : manualWallets} ${isLoading ? null : recomendedWallets}
           ${isLoading
             ? null
-            : [...Array(iterator)].map(
-                (_, index) => html`
-                  ${manualWallets[index]} ${extensions[index]}
-                  ${listings[index]
+            : listings.map(
+                listing => html`
+                  ${listing
                     ? html`
                         <wcm-wallet-button
-                          imageId=${listings[index].image_id}
-                          name=${listings[index].name}
-                          walletId=${listings[index].id}
-                          .onClick=${() => this.onConnect(listings[index])}
+                          imageId=${listing.image_id}
+                          name=${listing.name}
+                          walletId=${listing.id}
+                          .onClick=${() => this.onConnect(listing)}
                         >
                         </wcm-wallet-button>
                       `

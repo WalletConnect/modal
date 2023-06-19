@@ -12,8 +12,10 @@ export class WcmGetWalletView extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- private ------------------------------------------------------ //
-  private onGet(url: string) {
-    CoreUtil.openHref(url, '_blank')
+  private onGet(url?: string) {
+    if (url) {
+      CoreUtil.openHref(url, '_blank')
+    }
   }
 
   // -- render ------------------------------------------------------- //

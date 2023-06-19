@@ -1,6 +1,7 @@
 import { CoreUtil } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
@@ -27,7 +28,7 @@ export class WcmInstallWalletView extends LitElement {
       <wcm-modal-content>
         <wcm-connector-waiting
           walletId=${id}
-          imageId=${image_id}
+          imageId=${ifDefined(image_id)}
           label="Not Detected"
           .isStale=${true}
         ></wcm-connector-waiting>

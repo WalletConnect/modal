@@ -10,7 +10,6 @@ const isMobile = CoreUtil.isMobile()
 // -- initial state ------------------------------------------------ //
 const state = proxy<ExplorerCtrlState>({
   wallets: { listings: [], total: 0, page: 1 },
-  injectedWallets: [],
   search: { listings: [], total: 0, page: 1 },
   recomendedWallets: []
 })
@@ -47,8 +46,8 @@ export const ExplorerCtrl = {
 
     // Fetch default recomended wallets based on user's device, options and excluded config
     else {
-      const { standaloneChains, isAuth } = OptionsCtrl.state
-      const chainsFilter = standaloneChains?.join(',')
+      const { chains, isAuth } = OptionsCtrl.state
+      const chainsFilter = chains?.join(',')
       const isExcluded = CoreUtil.isArray(explorerExcludedWalletIds)
       const params = {
         page: 1,
@@ -111,14 +110,6 @@ export const ExplorerCtrl = {
     }
 
     return { listings, total }
-  },
-
-  async getInjectedWallets() {
-    const { listings: listingsObj } = await ExplorerUtil.getInjectedListings({})
-    const listings = Object.values(listingsObj)
-    state.injectedWallets = listings
-
-    return state.injectedWallets
   },
 
   getWalletImageUrl(imageId: string) {

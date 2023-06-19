@@ -1,6 +1,7 @@
 import { CoreUtil } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
@@ -13,7 +14,7 @@ export class WcmMobileQrConnectingView extends LitElement {
   // -- render ------------------------------------------------------- //
   protected render() {
     const { name, id, image_id } = CoreUtil.getWalletRouterData()
-    const { isInjected, isDesktop, isWeb } = UiUtil.getCachedRouterWalletPlatforms()
+    const { isDesktop, isWeb } = UiUtil.getCachedRouterWalletPlatforms()
 
     return html`
       <wcm-modal-header
@@ -23,7 +24,7 @@ export class WcmMobileQrConnectingView extends LitElement {
       ></wcm-modal-header>
 
       <wcm-modal-content>
-        <wcm-walletconnect-qr walletId=${id} imageId=${image_id}></wcm-walletconnect-qr>
+        <wcm-walletconnect-qr walletId=${id} imageId=${ifDefined(image_id)}></wcm-walletconnect-qr>
       </wcm-modal-content>
 
       <wcm-info-footer>
@@ -31,8 +32,7 @@ export class WcmMobileQrConnectingView extends LitElement {
           ${`Scan this QR Code with your phone's camera or inside ${name} app`}
         </wcm-text>
 
-        <wcm-platform-selection .isDesktop=${isDesktop} .isInjected=${isInjected} .isWeb=${isWeb}>
-        </wcm-platform-selection>
+        <wcm-platform-selection .isDesktop=${isDesktop} .isWeb=${isWeb}> </wcm-platform-selection>
       </wcm-info-footer>
     `
   }

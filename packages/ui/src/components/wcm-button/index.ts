@@ -10,9 +10,9 @@ export class WcmButton extends LitElement {
   public static styles = [ThemeUtil.globalCss, styles]
 
   // -- state & properties ------------------------------------------- //
-  @property() public disabled? = false
-  @property() public iconLeft?: TemplateResult<2> = undefined
-  @property() public iconRight?: TemplateResult<2> = undefined
+  @property({ type: Boolean }) public disabled? = false
+  @property({ type: Object }) public iconLeft?: TemplateResult<2> = undefined
+  @property({ type: Object }) public iconRight?: TemplateResult<2> = undefined
   @property() public onClick: () => void = () => null
   @property() public variant: 'default' | 'ghost' | 'outline' = 'default'
 

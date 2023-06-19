@@ -2,7 +2,6 @@ import { CoreUtil, ExplorerCtrl, RouterCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { SvgUtil } from '../../utils/SvgUtil'
-import { TemplateUtil } from '../../utils/TemplateUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
 import styles from './styles.css'
@@ -24,9 +23,6 @@ export class WcmAndroidWalletSelection extends LitElement {
   protected render() {
     const { recomendedWallets } = ExplorerCtrl.state
     const wallets = [...recomendedWallets, ...recomendedWallets]
-    const external = TemplateUtil.externalWalletsTemplate()
-    const injected = TemplateUtil.installedInjectedWalletsTemplate()
-    const isOther = [...injected, ...external].length > 0
     const recomendedCount = CoreUtil.RECOMMENDED_WALLET_AMOUNT * 2
 
     return html`
@@ -61,24 +57,9 @@ export class WcmAndroidWalletSelection extends LitElement {
         </div>
       </wcm-modal-content>
 
-      ${isOther
-        ? html`
-            <wcm-modal-footer>
-              <div class="wcm-title">
-                ${SvgUtil.WALLET_ICON}
-                <wcm-text variant="small-regular" color="accent">Other</wcm-text>
-              </div>
-
-              <div class="wcm-grid">${injected} ${external}</div>
-            </wcm-modal-footer>
-          `
-        : null}
-
       <wcm-info-footer>
         <wcm-text color="secondary" variant="small-thin">
-          ${`Choose WalletConnect to see supported apps on your device${
-            isOther ? ', or select from other options' : ''
-          }`}
+          Choose WalletConnect to see supported apps on your device
         </wcm-text>
 
         <wcm-button

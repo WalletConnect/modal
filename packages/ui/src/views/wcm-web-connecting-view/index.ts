@@ -1,6 +1,7 @@
-import { CoreUtil, OptionsCtrl, WcConnectionCtrl } from '#core'
+import { CoreUtil, OptionsCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
+import { ifDefined } from 'lit/directives/if-defined'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
@@ -17,18 +18,9 @@ export class WcmWebConnectingView extends LitElement {
   public constructor() {
     super()
     this.openWebWallet()
-    this.unwatchConnection = WcConnectionCtrl.subscribe(connection => {
-      this.isError = connection.pairingError
-    })
-  }
-
-  public disconnectedCallback() {
-    this.unwatchConnection?.()
   }
 
   // -- private ------------------------------------------------------ //
-  private readonly unwatchConnection?: () => void = undefined
-
   private onFormatAndRedirect(uri: string) {
     const { desktop, name } = CoreUtil.getWalletRouterData()
     const universalUrl = desktop?.universal
@@ -40,22 +32,18 @@ export class WcmWebConnectingView extends LitElement {
   }
 
   private openWebWallet() {
-    WcConnectionCtrl.setPairingError(false)
-    const { standaloneUri } = OptionsCtrl.state
-    const { pairingUri } = WcConnectionCtrl.state
+    const { walletConnectUri } = OptionsCtrl.state
     const routerData = CoreUtil.getWalletRouterData()
     UiUtil.setRecentWallet(routerData)
-    if (standaloneUri) {
-      this.onFormatAndRedirect(standaloneUri)
-    } else {
-      this.onFormatAndRedirect(pairingUri)
+    if (walletConnectUri) {
+      this.onFormatAndRedirect(walletConnectUri)
     }
   }
 
   // -- render ------------------------------------------------------- //
   protected render() {
     const { name, id, image_id } = CoreUtil.getWalletRouterData()
-    const { isMobile, isInjected, isDesktop } = UiUtil.getCachedRouterWalletPlatforms()
+    const { isMobile, isDesktop } = UiUtil.getCachedRouterWalletPlatforms()
     const isMobilePlatform = CoreUtil.isMobile()
 
     return html`
@@ -68,7 +56,7 @@ export class WcmWebConnectingView extends LitElement {
       <wcm-modal-content>
         <wcm-connector-waiting
           walletId=${id}
-          imageId=${image_id}
+          imageId=${ifDefined(image_id)}
           label=${`Continue in ${name}...`}
           .isError=${this.isError}
         ></wcm-connector-waiting>
@@ -81,7 +69,6 @@ export class WcmWebConnectingView extends LitElement {
 
         <wcm-platform-selection
           .isMobile=${isMobile}
-          .isInjected=${isMobilePlatform ? false : isInjected}
           .isDesktop=${isMobilePlatform ? false : isDesktop}
           .isRetry=${true}
         >

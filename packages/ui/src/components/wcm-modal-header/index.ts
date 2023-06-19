@@ -14,8 +14,8 @@ export class WcmModalHeader extends LitElement {
   // -- state & properties ------------------------------------------- //
   @property() public title = ''
   @property() public onAction?: () => void = undefined
-  @property() public actionIcon?: TemplateResult<2> = undefined
-  @property() public border = false
+  @property({ type: Object }) public actionIcon?: TemplateResult<2> = undefined
+  @property({ type: Boolean }) public border = false
 
   // -- private ------------------------------------------------------ //
   private backBtnTemplate() {

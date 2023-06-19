@@ -1,4 +1,4 @@
-import { ModalCtrl, OptionsCtrl } from '#core'
+import { ModalCtrl } from '#core'
 import { LitElement, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
@@ -121,18 +121,6 @@ export class WcmModal extends LitElement {
     this.abortController = undefined
   }
 
-  private managedModalContextTemplate() {
-    const { isStandalone } = OptionsCtrl.state
-
-    return isStandalone
-      ? null
-      : html`
-          <wcm-wc-connection-context></wcm-wc-connection-context>
-          <wcm-account-context></wcm-account-context>
-          <wcm-network-context></wcm-network-context>
-        `
-  }
-
   // -- render ------------------------------------------------------- //
   protected render() {
     const classes = {
@@ -143,8 +131,6 @@ export class WcmModal extends LitElement {
     return html`
       <wcm-explorer-context></wcm-explorer-context>
       <wcm-theme-context></wcm-theme-context>
-
-      ${this.managedModalContextTemplate()}
 
       <div
         id="wcm-modal"
