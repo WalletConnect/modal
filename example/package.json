@@ -1,0 +1,17 @@
+{
+  "name": "walletconnect-modal-example",
+  "private": true,
+  "version": "2.4.7",
+  "type": "module",
+  "scripts": {
+    "dev": "vite"
+  },
+  "dependencies": {
+    "@walletconnect/sign-html": "2.4.7",
+    "@walletconnect/auth-html": "2.4.7",
+    "@walletconnect/ethereum-provider": "2.8.1"
+  },
+  "devDependencies": {
+    "vite": "4.3.9"
+  }
+}

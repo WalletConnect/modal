@@ -21,7 +21,8 @@
     "projects/auth-react",
     "projects/auth-html",
     "projects/sign-html",
-    "projects/sign-react"
+    "projects/sign-react",
+    "example"
   ],
   "devDependencies": {
     "@types/node": "20.3.1",
