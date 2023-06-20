@@ -1,6 +1,6 @@
 {
   "name": "laboratory",
-  "version": "2.4.7",
+  "version": "2.4.8-0f22fc8",
   "private": true,
   "scripts": {
     "dev": "rm -rf .next; next dev",
@@ -8,11 +8,11 @@
   },
   "dependencies": {
     "@nextui-org/react": "1.0.0-beta.13",
-    "@walletconnect/auth-html": "2.4.7",
-    "@walletconnect/auth-react": "2.4.7",
-    "@walletconnect/sign-html": "2.4.7",
-    "@walletconnect/sign-react": "2.4.7",
-    "@walletconnect/modal": "2.4.7",
+    "@walletconnect/auth-html": "2.4.8-0f22fc8",
+    "@walletconnect/auth-react": "2.4.8-0f22fc8",
+    "@walletconnect/sign-html": "2.4.8-0f22fc8",
+    "@walletconnect/sign-react": "2.4.8-0f22fc8",
+    "@walletconnect/modal": "2.4.8-0f22fc8",
     "next": "13.4.6",
     "react": "18.2.0",
     "react-code-blocks": "0.0.9-0",

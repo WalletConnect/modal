@@ -9,6 +9,6 @@
     "projects/sign-html",
     "projects/sign-react"
   ],
-  "version": "2.4.7",
+  "version": "2.4.8-0f22fc8",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }
