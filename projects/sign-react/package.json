@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/sign-react",
-  "version": "2.4.7",
+  "version": "2.4.8-0f22fc8",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",
@@ -17,7 +17,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@walletconnect/sign-html": "2.4.7",
+    "@walletconnect/sign-html": "2.4.8-0f22fc8",
     "mitt": "3.0.0"
   },
   "peerDependencies": {

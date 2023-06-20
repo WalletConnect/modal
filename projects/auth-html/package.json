@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/auth-html",
-  "version": "2.4.7",
+  "version": "2.4.8-0f22fc8",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
   "type": "module",
@@ -19,7 +19,7 @@
   },
   "dependencies": {
     "@walletconnect/auth-client": "2.1.0",
-    "@walletconnect/modal": "2.4.7"
+    "@walletconnect/modal": "2.4.8-0f22fc8"
   },
   "keywords": [
     "web3",
