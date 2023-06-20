@@ -5,6 +5,7 @@
   "type": "module",
   "scripts": {
     "build": "npm run build --ws --if-present",
+    "dev": "npm run dev --ws --if-present",
     "lab": "npm run dev --w=laboratory",
     "lint": "eslint .",
     "prettier": "prettier --check .",

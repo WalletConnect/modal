@@ -18,16 +18,10 @@ export class WalletConnectModal {
 
   private async initUi() {
     if (typeof window !== 'undefined') {
-      console.log('before import')
       await import('@walletconnect/modal-ui')
-      console.log('after import')
       const modal = document.createElement('wcm-modal')
-      console.log(modal)
-      console.log('after create root')
       document.body.insertAdjacentElement('beforeend', modal)
-      console.log('after insert adjecent')
       OptionsCtrl.setIsUiLoaded(true)
-      console.log('after set ui loaded')
     }
   }
 
