@@ -1,0 +1,73 @@
+wcm-modal-content {
+  height: clamp(200px, 60vh, 600px);
+  display: block;
+  overflow: scroll;
+  scrollbar-width: none;
+  position: relative;
+  margin-top: 1px;
+}
+
+.wcm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  justify-content: space-between;
+  margin: -15px -10px;
+  padding-top: 20px;
+}
+
+wcm-modal-content::before,
+wcm-modal-content::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 1;
+  width: 100%;
+  height: 20px;
+  opacity: 1;
+}
+
+wcm-modal-content::before {
+  box-shadow: 0 -1px 0 0 var(--wcm-color-bg-1);
+  background: linear-gradient(var(--wcm-color-bg-1), rgba(255, 255, 255, 0));
+}
+
+wcm-modal-content::after {
+  box-shadow: 0 1px 0 0 var(--wcm-color-bg-1);
+  background: linear-gradient(rgba(255, 255, 255, 0), var(--wcm-color-bg-1));
+  top: calc(100% - 20px);
+}
+
+wcm-modal-content::-webkit-scrollbar {
+  display: none;
+}
+
+.wcm-placeholder-block {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100px;
+  overflow: hidden;
+}
+
+.wcm-loading,
+.wcm-empty {
+  display: flex;
+}
+
+.wcm-loading .wcm-placeholder-block {
+  height: 100%;
+}
+
+.wcm-end-reached .wcm-placeholder-block {
+  height: 0;
+  opacity: 0;
+}
+
+.wcm-empty .wcm-placeholder-block {
+  opacity: 1;
+  height: 100%;
+}
+
+wcm-wallet-button {
+  margin: calc((100% - 60px) / 3) 0;
+}

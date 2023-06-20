@@ -1,0 +1,14 @@
+{
+  "npmClient": "npm",
+  "packages": [
+    "packages/core",
+    "packages/ui",
+    "projects/modal",
+    "projects/auth-react",
+    "projects/auth-html",
+    "projects/sign-html",
+    "projects/sign-react"
+  ],
+  "version": "2.4.7",
+  "$schema": "node_modules/lerna/schemas/lerna-schema.json"
+}

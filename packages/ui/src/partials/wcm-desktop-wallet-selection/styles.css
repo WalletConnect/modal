@@ -1,0 +1,41 @@
+.wcm-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 80px);
+  justify-content: space-between;
+}
+
+.wcm-mobile-title,
+.wcm-desktop-title {
+  display: flex;
+  align-items: center;
+}
+
+.wcm-mobile-title {
+  justify-content: space-between;
+  margin-bottom: 20px;
+  margin-top: -10px;
+}
+
+.wcm-desktop-title {
+  margin-bottom: 10px;
+  padding: 0 10px;
+}
+
+.wcm-subtitle {
+  display: flex;
+  align-items: center;
+}
+
+.wcm-subtitle:last-child path {
+  fill: var(--wcm-color-fg-3);
+}
+
+.wcm-mobile-title svg,
+.wcm-desktop-title svg {
+  margin-right: 6px;
+}
+
+.wcm-mobile-title path,
+.wcm-desktop-title path {
+  fill: var(--wcm-accent-color);
+}
