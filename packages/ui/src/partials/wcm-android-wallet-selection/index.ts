@@ -1,4 +1,4 @@
-import { CoreUtil, ExplorerCtrl, RouterCtrl } from '#core'
+import { CoreUtil, ExplorerCtrl, RouterCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { SvgUtil } from '../../utils/SvgUtil'

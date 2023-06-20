@@ -1,4 +1,4 @@
-import { RouterCtrl } from '#core'
+import { RouterCtrl } from '@walletconnect/modal-core'
 import type { TemplateResult } from 'lit'
 import { html, LitElement } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
@@ -14,7 +14,7 @@ export class WcmModalHeader extends LitElement {
   // -- state & properties ------------------------------------------- //
   @property() public title = ''
   @property() public onAction?: () => void = undefined
-  @property({ type: Object }) public actionIcon?: TemplateResult<2> = undefined
+  @property() public actionIcon?: TemplateResult<2> = undefined
   @property({ type: Boolean }) public border = false
 
   // -- private ------------------------------------------------------ //

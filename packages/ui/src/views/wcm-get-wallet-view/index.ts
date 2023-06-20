@@ -1,4 +1,4 @@
-import { CoreUtil, ExplorerCtrl } from '#core'
+import { CoreUtil, ExplorerCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
 import { DataUtil } from '../../utils/DataUtil'

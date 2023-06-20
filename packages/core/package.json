@@ -1,5 +1,5 @@
 {
-  "name": "core",
+  "name": "@walletconnect/modal-core",
   "version": "2.4.7",
   "scripts": {
     "typecheck": "tsc --noEmit"

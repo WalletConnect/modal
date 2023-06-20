@@ -20,8 +20,6 @@
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {
-      "#core": ["./packages/core/index.ts"],
-      "#ui": ["./packages/ui/index.ts"],
       "@walletconnect/types": ["node_modules/@walletconnect/types"]
     }
   },

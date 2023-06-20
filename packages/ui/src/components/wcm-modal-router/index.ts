@@ -1,5 +1,5 @@
-import type { RouterView } from '#core'
-import { RouterCtrl } from '#core'
+import type { RouterView } from '@walletconnect/modal-core'
+import { RouterCtrl } from '@walletconnect/modal-core'
 import { html, LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { animate } from 'motion'

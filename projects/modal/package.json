@@ -17,6 +17,10 @@
     "dev": "rollup --config rollup.config.js --watch",
     "typecheck": "tsc --noEmit"
   },
+  "dependencies": {
+    "@walletconnect/modal-ui": "2.4.7",
+    "@walletconnect/modal-core": "2.4.7"
+  },
   "keywords": [
     "web3",
     "crypto",

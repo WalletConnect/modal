@@ -4,8 +4,4 @@ import './src/partials'
 import './src/views'
 
 export * from './src/components/wcm-qrcode'
-export * from './src/partials/wcm-account-button'
-export * from './src/partials/wcm-connect-button'
-export * from './src/partials/wcm-core-button'
 export * from './src/partials/wcm-modal'
-export * from './src/partials/wcm-network-switch'

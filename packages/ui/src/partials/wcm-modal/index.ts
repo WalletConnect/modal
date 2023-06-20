@@ -1,4 +1,4 @@
-import { ModalCtrl } from '#core'
+import { ModalCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'

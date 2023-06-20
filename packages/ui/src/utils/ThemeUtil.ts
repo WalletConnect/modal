@@ -1,4 +1,4 @@
-import { ThemeCtrl } from '#core'
+import { ThemeCtrl } from '@walletconnect/modal-core'
 import { css } from 'lit'
 
 function themeModeVariables() {

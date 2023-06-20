@@ -1,5 +1,12 @@
-import type { WalletData } from '#core'
-import { ConfigCtrl, CoreUtil, ExplorerCtrl, OptionsCtrl, RouterCtrl, ToastCtrl } from '#core'
+import type { WalletData } from '@walletconnect/modal-core'
+import {
+  ConfigCtrl,
+  CoreUtil,
+  ExplorerCtrl,
+  OptionsCtrl,
+  RouterCtrl,
+  ToastCtrl
+} from '@walletconnect/modal-core'
 import type { LitElement } from 'lit'
 
 export const UiUtil = {
