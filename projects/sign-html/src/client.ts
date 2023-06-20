@@ -32,7 +32,6 @@ export class WalletConnectModalSign {
   public constructor(options: WalletConnectModalSignOptions) {
     this.#options = options
     this.#modal = this.#initModal()
-    this.#initModal()
     this.#initSignClient()
   }
 
@@ -68,7 +67,7 @@ export class WalletConnectModalSign {
             }
           })
         }
-        await this.#modal.openModal({ uri, standaloneChains: Array.from(standaloneChains) })
+        await this.#modal.openModal({ uri, chains: Array.from(standaloneChains) })
       }
 
       try {
