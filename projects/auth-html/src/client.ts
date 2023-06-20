@@ -80,7 +80,7 @@ export class WalletConnectModalAuth {
         })
 
         if (uri) {
-          await this.#modal.openModal({ uri, standaloneChains: [defaultChainId] })
+          await this.#modal.openModal({ uri, chains: [defaultChainId] })
         }
       }
     )

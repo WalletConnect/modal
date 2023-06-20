@@ -52,22 +52,22 @@ export class WalletConnectModalSign {
       const { uri, approval } = await this.#signClient!.connect(args)
 
       if (uri) {
-        const standaloneChains = new Set<string>()
+        const namespaceChains = new Set<string>()
         if (requiredNamespaces) {
           Object.values(requiredNamespaces).forEach(({ chains }) => {
             if (chains) {
-              chains.forEach(chain => standaloneChains.add(chain))
+              chains.forEach(chain => namespaceChains.add(chain))
             }
           })
         }
         if (optionalNamespaces) {
           Object.values(optionalNamespaces).forEach(({ chains }) => {
             if (chains) {
-              chains.forEach(chain => standaloneChains.add(chain))
+              chains.forEach(chain => namespaceChains.add(chain))
             }
           })
         }
-        await this.#modal.openModal({ uri, chains: Array.from(standaloneChains) })
+        await this.#modal.openModal({ uri, chains: Array.from(namespaceChains) })
       }
 
       try {
