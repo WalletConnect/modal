@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal",
-  "version": "2.4.8-0f22fc8",
+  "version": "2.4.8-06c2178",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
   "type": "module",
