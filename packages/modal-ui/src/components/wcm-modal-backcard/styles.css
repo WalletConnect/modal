@@ -1,0 +1,72 @@
+.wcm-toolbar-placeholder {
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  width: 100%;
+  position: absolute;
+  display: block;
+  pointer-events: none;
+  height: 100px;
+  border-radius: calc(var(--wcm-background-border-radius) * 0.9);
+  background-color: var(--wcm-background-color);
+  background-position: center;
+  background-size: cover;
+}
+
+.wcm-toolbar {
+  height: 38px;
+  display: flex;
+  position: relative;
+  margin: 5px 15px 5px 5px;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.wcm-toolbar svg,
+.wcm-toolbar img {
+  height: 28px;
+
+  object-position: left center;
+  object-fit: contain;
+}
+
+#wcm-wc-logo path {
+  fill: var(--wcm-accent-fill-color);
+}
+
+button {
+  width: 28px;
+  height: 28px;
+  border-radius: var(--wcm-icon-button-border-radius);
+  border: none;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  background-color: var(--wcm-color-bg-1);
+  box-shadow: 0 0 0 1px var(--wcm-color-overlay);
+}
+
+button:active {
+  background-color: var(--wcm-color-bg-2);
+}
+
+button svg {
+  display: block;
+  object-position: center;
+}
+
+button path {
+  fill: var(--wcm-color-fg-1);
+}
+
+.wcm-toolbar div {
+  display: flex;
+}
+
+@media (hover: hover) {
+  button:hover {
+    background-color: var(--wcm-color-bg-2);
+  }
+}
