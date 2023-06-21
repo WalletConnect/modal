@@ -1,2 +1,1 @@
-export { WalletConnectModalAuth } from './src/client';
-
+export { WalletConnectModalAuth } from './src/client'
