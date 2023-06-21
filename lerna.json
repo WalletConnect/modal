@@ -4,10 +4,10 @@
     "packages/core",
     "packages/ui",
     "projects/modal",
-    "projects/auth-react",
-    "projects/auth-html",
-    "projects/sign-html",
-    "projects/sign-react"
+    "projects/modal-auth-react",
+    "projects/modal-auth-html",
+    "projects/modal-sign-html",
+    "projects/modal-sign-react"
   ],
   "version": "2.4.8-0f22fc8",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"

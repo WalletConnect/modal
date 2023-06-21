@@ -1,14 +1,12 @@
-#### 📚 [Documentation](https://docs.walletconnect.com/2.0/web3modal/about)
+#### 📚 [Documentation](https://docs.walletconnect.com/2.0/web/walletConnectModal/installation)
 
 #### 🔎 [Examples](https://github.com/WalletConnect/web3modal-examples)
 
-#### 🧪 [Laboratory](https://lab.web3modal.com)
+#### 🧪 [Laboratory](lab-walletconnect-modal.pages.dev)
 
-#### 🔗 [Website](https://web3modal.com)
+# WalletConnect Modal
 
-# WalletConnectModal
-
-Your on-ramp to web3 multichain. WalletConnectModal is a versatile library that makes it super easy to connect users with your Dapp and start interacting with the blockchain.
+Simplest and most minimal way to implement ui for WalletConnect.
 
 <p align="center">
   <img src="./.github/assets/header.png" alt="" border="0">
@@ -16,4 +14,4 @@ Your on-ramp to web3 multichain. WalletConnectModal is a versatile library that 
 
 ## Development
 
-Please follow [developer docs](./.github/docs/development.md) to set up web3modal locally.
+Please follow [developer docs](./.github/docs/development.md) to set up WalletConnect Modal locally.

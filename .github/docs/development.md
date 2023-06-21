@@ -26,13 +26,16 @@ Please execute all commands from the monorepo root to avoid issues with npm work
 
 ## Repository structure
 
-- `laboratory` - Web3Modal test playground
-- `chains` - Helper packages for managed chain workflows
+- `laboratory` - WaleltConnectModal test playground
 - `packages`
   - `core` - State, proxy between ui and chain packages
-  - `ui` - Web-components based ui of web3modal
+  - `ui` - Web-components based ui of WaleltConnectModal
     - `components` - Basic ui components
     - `partials` - Complex ui pieces composing multiple components and accessing core
-    - `views` - Full web3modal views
-  - `react` - React wrapper on top of core and ui
-  - `html` - Vanilla html / js wrapper on top of core and ui
+    - `views` - Full WaleltConnectModal views
+- `projects`
+  - `modal-auth-html` - Modal pre-bundled with WalletConnect auth-client for plain html use
+  - `modal-auth-react` - Modal pre-bundled with WalletConnect auth-client for react use
+  - `modal-sign-html` - Modal pre-bundled with WalletConnect sign-client for plain html use
+  - `modal-sign-react` - Modal pre-bundled with WalletConnect sign-client for react use
+  - `modal` - Barebones modal without any clients
