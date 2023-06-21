@@ -2,7 +2,7 @@
 
 #### 🔎 [Examples](https://github.com/WalletConnect/web3modal-examples)
 
-#### 🧪 [Laboratory](lab-walletconnect-modal.pages.dev)
+#### 🧪 [Laboratory](https://lab-walletconnect-modal.pages.dev)
 
 # WalletConnect Modal
 
