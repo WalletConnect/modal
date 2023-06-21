@@ -7,7 +7,6 @@ import { RouterCtrl } from './RouterCtrl'
 export interface OpenOptions {
   uri: string
   chains?: string[]
-  route?: 'ConnectWallet' | 'Help'
 }
 
 // -- initial state ------------------------------------------------ //
@@ -30,10 +29,6 @@ export const ModalCtrl = {
       OptionsCtrl.setWalletConnectUri(options?.uri)
       OptionsCtrl.setChains(options?.chains)
       RouterCtrl.reset('ConnectWallet')
-
-      if (options?.route) {
-        RouterCtrl.reset(options.route)
-      }
 
       // Open modal if essential async data is ready
       if (isUiLoaded && isDataLoaded) {

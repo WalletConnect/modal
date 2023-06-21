@@ -66,14 +66,10 @@ export class WcmModalRouter extends LitElement {
         return html`<wcm-web-connecting-view></wcm-web-connecting-view>`
       case 'MobileQrcodeConnecting':
         return html`<wcm-mobile-qr-connecting-view></wcm-mobile-qr-connecting-view>`
-      case 'GetWallet':
-        return html`<wcm-get-wallet-view></wcm-get-wallet-view>`
       case 'WalletExplorer':
         return html`<wcm-wallet-explorer-view></wcm-wallet-explorer-view>`
       case 'Qrcode':
         return html`<wcm-qrcode-view></wcm-qrcode-view>`
-      case 'Help':
-        return html`<wcm-help-view></wcm-help-view>`
       case 'InstallWallet':
         return html`<wcm-install-wallet-view></wcm-install-wallet-view>`
       default:

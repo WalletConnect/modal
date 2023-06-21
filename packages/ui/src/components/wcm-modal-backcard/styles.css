@@ -70,14 +70,6 @@ button path {
   margin-right: 16px;
 }
 
-.wcm-help-active button:first-child {
-  background-color: var(--wcm-color-fg-1);
-}
-
-.wcm-help-active button:first-child path {
-  fill: var(--wcm-color-bg-1);
-}
-
 @media (hover: hover) {
   button:hover {
     background-color: var(--wcm-color-bg-2);

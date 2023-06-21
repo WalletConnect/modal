@@ -15,10 +15,6 @@ export class WcmAndroidWalletSelection extends LitElement {
     RouterCtrl.push('Qrcode')
   }
 
-  private onGetWallet() {
-    RouterCtrl.push('GetWallet')
-  }
-
   // -- render ------------------------------------------------------- //
   protected render() {
     const { recomendedWallets } = ExplorerCtrl.state
@@ -61,13 +57,6 @@ export class WcmAndroidWalletSelection extends LitElement {
         <wcm-text color="secondary" variant="small-thin">
           Choose WalletConnect to see supported apps on your device
         </wcm-text>
-
-        <wcm-button
-          variant="outline"
-          .iconRight=${SvgUtil.ARROW_UP_RIGHT_ICON}
-          .onClick=${() => this.onGetWallet()}
-          >I don't have a wallet</wcm-button
-        >
       </wcm-info-footer>
     `
   }

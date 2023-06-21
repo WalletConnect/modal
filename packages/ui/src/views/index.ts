@@ -1,7 +1,5 @@
 import './wcm-connect-wallet-view'
 import './wcm-desktop-connecting-view'
-import './wcm-get-wallet-view'
-import './wcm-help-view'
 import './wcm-install-wallet-view'
 import './wcm-mobile-connecting-view'
 import './wcm-mobile-qr-connecting-view'

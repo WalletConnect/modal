@@ -109,8 +109,6 @@ export interface ToastCtrlState {
 export type RouterView =
   | 'ConnectWallet'
   | 'DesktopConnecting'
-  | 'GetWallet'
-  | 'Help'
   | 'InstallWallet'
   | 'MobileConnecting'
   | 'MobileQrcodeConnecting'
