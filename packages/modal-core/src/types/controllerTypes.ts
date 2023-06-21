@@ -151,8 +151,6 @@ export interface ThemeCtrlState {
     '--wcm-accent-color'?: string
     '--wcm-accent-fill-color'?: string
     '--wcm-background-color'?: string
-    '--wcm-background-image-url'?: string
-    '--wcm-logo-image-url'?: string
     '--wcm-background-border-radius'?: string
     '--wcm-container-border-radius'?: string
     '--wcm-wallet-icon-border-radius'?: string

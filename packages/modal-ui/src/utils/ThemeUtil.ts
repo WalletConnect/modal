@@ -85,17 +85,6 @@ function themeVariablesPresets() {
   }
 }
 
-function themeBackgroundImage() {
-  const { themeVariables } = ThemeCtrl.state
-  const backgroundImageUrl = themeVariables?.['--wcm-background-image-url']
-    ? `url(${themeVariables['--wcm-background-image-url']})`
-    : 'none'
-
-  return {
-    '--wcm-background-image-url': backgroundImageUrl
-  }
-}
-
 export const ThemeUtil = {
   getPreset(key: string) {
     return themeVariablesPresets()[key as never]
@@ -109,8 +98,7 @@ export const ThemeUtil = {
       const variables = {
         ...themeModeVariables(),
         ...themeVariablesPresets(),
-        ...themeVariables,
-        ...themeBackgroundImage()
+        ...themeVariables
       }
 
       Object.entries(variables).forEach(([key, val]) => root.style.setProperty(key, val))
