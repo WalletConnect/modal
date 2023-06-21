@@ -1,6 +1,6 @@
 import { Button, Card, Spacer } from '@nextui-org/react'
-import type { WalletConnectModalSignSession } from '@walletconnect/sign-html'
-import { WalletConnectModalSign } from '@walletconnect/sign-html'
+import type { WalletConnectModalSignSession } from '@walletconnect/modal-sign-html'
+import { WalletConnectModalSign } from '@walletconnect/modal-sign-html'
 import { getAddressFromAccount, getSdkError } from '@walletconnect/utils'
 import { useEffect, useState } from 'react'
 import { NotificationCtrl } from '../../controllers/NotificationCtrl'

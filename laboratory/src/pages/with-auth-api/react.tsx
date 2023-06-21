@@ -1,5 +1,5 @@
 import { Button, Card } from '@nextui-org/react'
-import { WalletConnectModalAuth, useSignIn } from '@walletconnect/auth-react'
+import { WalletConnectModalAuth, useSignIn } from '@walletconnect/modal-auth-react'
 import { NotificationCtrl } from '../../controllers/NotificationCtrl'
 import { DEMO_METADATA, DEMO_STATEMENT } from '../../data/Constants'
 import { getProjectId, getTheme } from '../../utilities/EnvUtil'

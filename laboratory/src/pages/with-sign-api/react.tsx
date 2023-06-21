@@ -5,7 +5,7 @@ import {
   useDisconnect,
   useRequest,
   useSession
-} from '@walletconnect/sign-react'
+} from '@walletconnect/modal-sign-react'
 import { getAddressFromAccount, getSdkError } from '@walletconnect/utils'
 import { NotificationCtrl } from '../../controllers/NotificationCtrl'
 import { DEMO_METADATA, DEMO_NAMESPACE, DEMO_SIGN_REQUEST } from '../../data/Constants'
