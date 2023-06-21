@@ -13,6 +13,7 @@
     "@walletconnect/modal-sign-html": "2.4.8-4560daf-2",
     "@walletconnect/modal-sign-react": "2.4.8-4560daf-2",
     "@walletconnect/modal": "2.4.8-4560daf-2",
+    "@walletconnect/ethereum-provider": "2.8.1",
     "next": "13.4.6",
     "react": "18.2.0",
     "react-code-blocks": "0.0.9-0",
