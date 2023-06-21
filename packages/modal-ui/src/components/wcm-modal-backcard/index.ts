@@ -1,6 +1,6 @@
+import { ModalCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { ModalCtrl } from 'packages/modal-core'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'

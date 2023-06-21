@@ -1,5 +1,4 @@
-import type { LitElement } from 'lit'
-import type { WalletData } from 'packages/modal-core'
+import type { WalletData } from '@walletconnect/modal-core'
 import {
   ConfigCtrl,
   CoreUtil,
@@ -7,7 +6,8 @@ import {
   OptionsCtrl,
   RouterCtrl,
   ToastCtrl
-} from 'packages/modal-core'
+} from '@walletconnect/modal-core'
+import type { LitElement } from 'lit'
 
 export const UiUtil = {
   MOBILE_BREAKPOINT: 600,

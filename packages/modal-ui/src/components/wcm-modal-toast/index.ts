@@ -1,7 +1,7 @@
+import { ToastCtrl } from '@walletconnect/modal-core'
 import { html, LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
-import { ToastCtrl } from 'packages/modal-core'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'

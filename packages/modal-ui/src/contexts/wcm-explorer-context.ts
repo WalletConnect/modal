@@ -1,6 +1,6 @@
+import { ConfigCtrl, ExplorerCtrl, OptionsCtrl, ToastCtrl } from '@walletconnect/modal-core'
 import { LitElement } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
-import { ConfigCtrl, ExplorerCtrl, OptionsCtrl, ToastCtrl } from 'packages/modal-core'
 import { UiUtil } from '../utils/UiUtil'
 
 @customElement('wcm-explorer-context')

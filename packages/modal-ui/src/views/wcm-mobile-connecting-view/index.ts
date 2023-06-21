@@ -1,7 +1,7 @@
+import { CoreUtil, OptionsCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement, state } from 'lit/decorators.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { CoreUtil, OptionsCtrl } from 'packages/modal-core'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import { UiUtil } from '../../utils/UiUtil'
