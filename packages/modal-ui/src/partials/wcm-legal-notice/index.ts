@@ -1,6 +1,6 @@
+import { ConfigCtrl } from '@walletconnect/modal-core'
 import { html, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { ConfigCtrl } from 'packages/modal-core'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 

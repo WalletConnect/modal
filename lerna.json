@@ -1,7 +1,7 @@
 {
   "npmClient": "npm",
   "packages": [
-    "packages/modal-core",
+    "@walletconnect/modal-core",
     "packages/modal-ui",
     "projects/modal",
     "projects/modal-auth-html",

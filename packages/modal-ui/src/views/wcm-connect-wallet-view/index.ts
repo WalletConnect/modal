@@ -1,6 +1,6 @@
+import { CoreUtil } from '@walletconnect/modal-core'
 import { html, LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { CoreUtil } from 'packages/modal-core'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 
 @customElement('wcm-connect-wallet-view')

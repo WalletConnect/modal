@@ -17,7 +17,7 @@
     "clean": "rm -rf `find . -type d -name node_modules -o -name dist -o -name .next -o -name out`; rm package-lock.json"
   },
   "workspaces": [
-    "packages/modal-core",
+    "@walletconnect/modal-core",
     "packages/modal-ui",
     "projects/modal",
     "projects/modal-auth-html",

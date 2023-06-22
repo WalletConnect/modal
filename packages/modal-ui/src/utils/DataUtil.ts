@@ -1,4 +1,4 @@
-import { ConfigCtrl, CoreUtil, ExplorerCtrl } from 'packages/modal-core'
+import { ConfigCtrl, CoreUtil, ExplorerCtrl } from '@walletconnect/modal-core'
 import { UiUtil } from './UiUtil'
 
 export const DataUtil = {
