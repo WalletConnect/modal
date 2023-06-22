@@ -10,6 +10,6 @@
     "projects/modal-sign-react",
     "laboratory"
   ],
-  "version": "2.5.0-f0d3ee1",
+  "version": "2.5.0",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }

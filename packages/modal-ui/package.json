@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal-ui",
-  "version": "2.5.0-f0d3ee1",
+  "version": "2.5.0",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",
@@ -16,7 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@walletconnect/modal-core": "2.5.0-f0d3ee1",
+    "@walletconnect/modal-core": "2.5.0",
     "lit": "2.7.5",
     "motion": "10.16.2",
     "qrcode": "1.5.3"
