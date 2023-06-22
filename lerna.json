@@ -1,14 +1,15 @@
 {
   "npmClient": "npm",
   "packages": [
-    "packages/core",
-    "packages/ui",
+    "packages/modal-core",
+    "packages/modal-ui",
     "projects/modal",
     "projects/modal-auth-html",
     "projects/modal-auth-react",
     "projects/modal-sign-html",
-    "projects/modal-sign-react"
+    "projects/modal-sign-react",
+    "laboratory"
   ],
-  "version": "2.4.8-4560daf-2",
+  "version": "2.5.0-f0d3ee1",
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }

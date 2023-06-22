@@ -9,7 +9,10 @@ import { WalletConnectModal } from '@walletconnect/modal'
 export interface WalletConnectModalAuthOptions {
   projectId: string
   metadata: AuthClientTypes.Metadata
-  modalOptions?: Omit<WalletConnectModalConfig, 'projectId' | 'walletConnectVersion'>
+  modalOptions?: Omit<
+    WalletConnectModalConfig,
+    'chains' | 'enableAuthMode' | 'projectId' | 'walletConnectVersion'
+  >
 }
 
 export interface WalletConnectModalAuthSignInArguments {

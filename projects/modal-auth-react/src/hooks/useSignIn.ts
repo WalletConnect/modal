@@ -1,4 +1,4 @@
-import type { WalletConnectModalAuthSignInArguments } from 'projects/modal-auth-html'
+import type { WalletConnectModalAuthSignInArguments } from '@walletconnect/modal-auth-html'
 import type { WalletConnectModalAuthInstance } from '../client'
 import { getWalletConnectModalAuthClient } from '../client'
 import { useAsyncAction } from './_useAsyncAction'

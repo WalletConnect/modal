@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal",
-  "version": "2.4.8-4560daf-2",
+  "version": "2.5.0-f0d3ee1",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
   "type": "module",
@@ -18,8 +18,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@walletconnect/modal-core": "2.4.8-4560daf-2",
-    "@walletconnect/modal-ui": "2.4.8-4560daf-2"
+    "@walletconnect/modal-core": "2.5.0-f0d3ee1",
+    "@walletconnect/modal-ui": "2.5.0-f0d3ee1"
   },
   "keywords": [
     "web3",

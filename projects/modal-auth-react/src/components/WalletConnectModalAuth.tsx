@@ -1,4 +1,4 @@
-import type { WalletConnectModalAuthOptions } from 'projects/modal-auth-html'
+import type { WalletConnectModalAuthOptions } from '@walletconnect/modal-auth-html'
 import { memo, useEffect } from 'react'
 import { setWalletConnectModalAuthClient } from '../client'
 

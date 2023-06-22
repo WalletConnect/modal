@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal-core",
-  "version": "2.4.8-4560daf-2",
+  "version": "2.5.0-f0d3ee1",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",

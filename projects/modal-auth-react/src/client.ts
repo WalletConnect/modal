@@ -1,5 +1,5 @@
-import type { WalletConnectModalAuthOptions } from 'projects/modal-auth-html'
-import { WalletConnectModalAuth } from 'projects/modal-auth-html'
+import type { WalletConnectModalAuthOptions } from '@walletconnect/modal-auth-html'
+import { WalletConnectModalAuth } from '@walletconnect/modal-auth-html'
 
 let walletConnectModalAuthClient: WalletConnectModalAuth | undefined = undefined
 
