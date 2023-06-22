@@ -1,6 +1,6 @@
+import { ThemeCtrl } from '@walletconnect/modal-core'
 import { LitElement } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { ThemeCtrl } from 'packages/modal-core'
 import { ThemeUtil } from '../utils/ThemeUtil'
 
 @customElement('wcm-theme-context')

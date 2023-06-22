@@ -1,8 +1,8 @@
+import { ThemeCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement, property } from 'lit/decorators.js'
 import { classMap } from 'lit/directives/class-map.js'
 import { ifDefined } from 'lit/directives/if-defined.js'
-import { ThemeCtrl } from 'packages/modal-core'
 import { ThemeUtil } from '../../utils/ThemeUtil'
 import styles from './styles.css'
 

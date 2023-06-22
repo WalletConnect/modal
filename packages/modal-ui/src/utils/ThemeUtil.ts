@@ -1,5 +1,5 @@
+import { ThemeCtrl } from '@walletconnect/modal-core'
 import { css } from 'lit'
-import { ThemeCtrl } from 'packages/modal-core'
 
 function themeModeVariables() {
   const themeMode = ThemeCtrl.state.themeMode ?? 'dark'

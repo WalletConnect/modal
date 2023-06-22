@@ -1,6 +1,6 @@
+import { ExplorerCtrl, RouterCtrl } from '@walletconnect/modal-core'
 import { LitElement, html } from 'lit'
 import { customElement } from 'lit/decorators.js'
-import { ExplorerCtrl, RouterCtrl } from 'packages/modal-core'
 import { DataUtil } from '../../utils/DataUtil'
 import { SvgUtil } from '../../utils/SvgUtil'
 import { ThemeUtil } from '../../utils/ThemeUtil'
