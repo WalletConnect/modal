@@ -10,19 +10,7 @@ import { getErrorMessage, showErrorToast } from '../../utilities/ErrorUtil'
 
 const web3ModalSign = new WalletConnectModalSign({
   projectId: getProjectId(),
-  modalOptions: {
-    themeMode: getTheme(),
-    mobileWallets: [
-      {
-        id: 'metamask',
-        name: 'MetaMask',
-        links: {
-          native: 'metamask://',
-          universal: ''
-        }
-      }
-    ]
-  },
+  modalOptions: { themeMode: getTheme() },
   metadata: DEMO_METADATA
 })
 

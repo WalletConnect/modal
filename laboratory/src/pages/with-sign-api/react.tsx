@@ -86,19 +86,7 @@ export default function WithSignReactPage() {
 
       <WalletConnectModalSign
         projectId={getProjectId()}
-        modalOptions={{
-          themeMode: getTheme(),
-          mobileWallets: [
-            {
-              id: 'metamask',
-              name: 'MetaMask',
-              links: {
-                native: 'metamask://',
-                universal: ''
-              }
-            }
-          ]
-        }}
+        modalOptions={{ themeMode: getTheme() }}
         metadata={DEMO_METADATA}
       />
     </>
