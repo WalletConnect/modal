@@ -110,9 +110,13 @@ export const UiUtil = {
   async handleUriCopy() {
     const { walletConnectUri } = OptionsCtrl.state
     if (walletConnectUri) {
-      await navigator.clipboard.writeText(walletConnectUri)
+      try {
+        await navigator.clipboard.writeText(walletConnectUri)
+        ToastCtrl.openToast('Link copied', 'success')
+      } catch {
+        ToastCtrl.openToast('Failed to copy', 'error')
+      }
     }
-    ToastCtrl.openToast('Link copied', 'success')
   },
 
   getCustomImageUrls() {
