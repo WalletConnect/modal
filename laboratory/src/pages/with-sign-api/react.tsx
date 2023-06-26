@@ -1,4 +1,4 @@
-import { Button, Card, Spacer } from '@nextui-org/react'
+import { Button, Card, Loading, Spacer } from '@nextui-org/react'
 import {
   WalletConnectModalSign,
   useConnect,
@@ -7,11 +7,15 @@ import {
   useSession
 } from '@walletconnect/modal-sign-react'
 import { getAddressFromAccount, getSdkError } from '@walletconnect/utils'
+import { useState } from 'react'
 import { NotificationCtrl } from '../../controllers/NotificationCtrl'
 import { DEMO_METADATA, DEMO_NAMESPACE, DEMO_SIGN_REQUEST } from '../../data/Constants'
 import { getProjectId, getTheme } from '../../utilities/EnvUtil'
+import { getErrorMessage, showErrorToast } from '../../utilities/ErrorUtil'
 
 export default function WithSignReactPage() {
+  const [disconnecting, setDisconnecting] = useState<boolean>(false)
+
   const session = useSession()
   const { request } = useRequest(
     DEMO_SIGN_REQUEST(
@@ -26,17 +30,36 @@ export default function WithSignReactPage() {
   const { connect } = useConnect(DEMO_NAMESPACE)
 
   async function onConnect() {
-    const result = await connect()
-    NotificationCtrl.open('Connect', JSON.stringify(result, null, 2))
+    try {
+      setDisconnecting(false)
+      const result = await connect()
+      NotificationCtrl.open('Connect', JSON.stringify(result, null, 2))
+    } catch (error) {
+      const message = getErrorMessage(error)
+      showErrorToast(message)
+    }
   }
 
   function onDisconnect() {
-    disconnect()
+    if (!disconnecting) {
+      setDisconnecting(true)
+      try {
+        disconnect()
+      } catch (error) {
+        const message = getErrorMessage(error)
+        showErrorToast(message)
+      }
+    }
   }
 
   async function onSignMessage() {
-    const result = await request()
-    NotificationCtrl.open('Sign Message', JSON.stringify(result, null, 2))
+    try {
+      const result = await request()
+      NotificationCtrl.open('Sign Message', JSON.stringify(result, null, 2))
+    } catch (error) {
+      const message = getErrorMessage(error)
+      showErrorToast(message)
+    }
   }
 
   return (
@@ -49,8 +72,8 @@ export default function WithSignReactPage() {
                 Sign Message
               </Button>
               <Spacer />
-              <Button shadow color="error" onPress={onDisconnect}>
-                Disconnect
+              <Button shadow color="error" onPress={onDisconnect} disabled={disconnecting}>
+                {disconnecting ? <Loading size="xs" color={'white'} /> : 'Disconnect'}
               </Button>
             </>
           ) : (
@@ -63,19 +86,7 @@ export default function WithSignReactPage() {
 
       <WalletConnectModalSign
         projectId={getProjectId()}
-        modalOptions={{
-          themeMode: getTheme(),
-          mobileWallets: [
-            {
-              id: 'metamask',
-              name: 'MetaMask',
-              links: {
-                native: 'metamask://',
-                universal: ''
-              }
-            }
-          ]
-        }}
+        modalOptions={{ themeMode: getTheme() }}
         metadata={DEMO_METADATA}
       />
     </>

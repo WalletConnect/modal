@@ -3,6 +3,7 @@ import { WalletConnectModalAuth } from '@walletconnect/modal-auth-html'
 import { NotificationCtrl } from '../../controllers/NotificationCtrl'
 import { DEMO_METADATA, DEMO_STATEMENT } from '../../data/Constants'
 import { getProjectId, getTheme } from '../../utilities/EnvUtil'
+import { getErrorMessage, showErrorToast } from '../../utilities/ErrorUtil'
 
 const web3ModalAuth = new WalletConnectModalAuth({
   projectId: getProjectId(),
@@ -16,7 +17,8 @@ export default function WithAuthHtmlPage() {
       const data = await web3ModalAuth.signIn(DEMO_STATEMENT)
       NotificationCtrl.open('Sign In', JSON.stringify(data, null, 2))
     } catch (error) {
-      NotificationCtrl.open('Sign In', JSON.stringify(error, null, 2))
+      const message = getErrorMessage(error)
+      showErrorToast(message)
     }
   }
 

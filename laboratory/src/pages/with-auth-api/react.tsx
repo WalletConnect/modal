@@ -3,13 +3,19 @@ import { WalletConnectModalAuth, useSignIn } from '@walletconnect/modal-auth-rea
 import { NotificationCtrl } from '../../controllers/NotificationCtrl'
 import { DEMO_METADATA, DEMO_STATEMENT } from '../../data/Constants'
 import { getProjectId, getTheme } from '../../utilities/EnvUtil'
+import { getErrorMessage, showErrorToast } from '../../utilities/ErrorUtil'
 
 export default function WithAuthReactPage() {
   const { signIn } = useSignIn(DEMO_STATEMENT)
 
   async function onSignIn() {
-    const data = await signIn()
-    NotificationCtrl.open('Sign In', JSON.stringify(data, null, 2))
+    try {
+      const data = await signIn()
+      NotificationCtrl.open('Sign In', JSON.stringify(data, null, 2))
+    } catch (error) {
+      const message = getErrorMessage(error)
+      showErrorToast(message)
+    }
   }
 
   return (

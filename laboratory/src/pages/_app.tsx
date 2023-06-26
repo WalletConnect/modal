@@ -7,6 +7,7 @@ import { NotificationModal } from '../components/NotificationModal'
 import { ShowLocalStorageButton } from '../components/ShowLocalStorageButton'
 import { SunIcon } from '../components/SunIcon'
 import { getTheme } from '../utilities/EnvUtil'
+import Toast from '../components/Toast'
 
 export default function App({ Component, pageProps }: AppProps) {
   const [ready, setReady] = useState(false)
@@ -49,6 +50,7 @@ export default function App({ Component, pageProps }: AppProps) {
             </div>
           </Row>
           <NotificationModal />
+          <Toast />
 
           <Component {...pageProps} />
         </NextUIProvider>

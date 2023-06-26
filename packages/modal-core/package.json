@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal-core",
-  "version": "2.5.2",
+  "version": "2.5.3",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",
@@ -17,7 +17,7 @@
   },
   "dependencies": {
     "buffer": "6.0.3",
-    "valtio": "1.10.5"
+    "valtio": "1.10.6"
   },
   "keywords": [
     "web3",
