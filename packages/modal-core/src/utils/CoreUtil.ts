@@ -79,25 +79,40 @@ export const CoreUtil = {
   },
 
   setWalletConnectDeepLink(href: string, name: string) {
-    localStorage.setItem(CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE, JSON.stringify({ href, name }))
+    try {
+      localStorage.setItem(CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE, JSON.stringify({ href, name }))
+    } catch {
+      console.info('Unable to set WalletConnect deep link')
+    }
   },
 
   setWalletConnectAndroidDeepLink(wcUri: string) {
-    const [href] = wcUri.split('?')
-
-    localStorage.setItem(
-      CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE,
-      JSON.stringify({ href, name: 'Android' })
-    )
+    try {
+      const [href] = wcUri.split('?')
+      localStorage.setItem(
+        CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE,
+        JSON.stringify({ href, name: 'Android' })
+      )
+    } catch {
+      console.info('Unable to set WalletConnect android deep link')
+    }
   },
 
   removeWalletConnectDeepLink() {
-    localStorage.removeItem(CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE)
+    try {
+      localStorage.removeItem(CoreUtil.WALLETCONNECT_DEEPLINK_CHOICE)
+    } catch {
+      console.info('Unable to remove WalletConnect deep link')
+    }
   },
 
   setModalVersionInStorage() {
-    if (typeof localStorage !== 'undefined') {
-      localStorage.setItem(CoreUtil.WCM_VERSION, process.env.ROLLUP_WCM_VERSION ?? 'UNKNOWN')
+    try {
+      if (typeof localStorage !== 'undefined') {
+        localStorage.setItem(CoreUtil.WCM_VERSION, process.env.ROLLUP_WCM_VERSION ?? 'UNKNOWN')
+      }
+    } catch {
+      console.info('Unable to set Web3Modal version in storage')
     }
   },
 
