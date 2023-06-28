@@ -135,15 +135,25 @@ export const UiUtil = {
   },
 
   setRecentWallet(wallet: WalletData) {
-    localStorage.setItem(UiUtil.WCM_RECENT_WALLET_DATA, JSON.stringify(wallet))
+    try {
+      localStorage.setItem(UiUtil.WCM_RECENT_WALLET_DATA, JSON.stringify(wallet))
+    } catch {
+      console.info('Unable to set recent wallet')
+    }
   },
 
   getRecentWallet() {
-    const wallet = localStorage.getItem(UiUtil.WCM_RECENT_WALLET_DATA)
-    if (wallet) {
-      const json = JSON.parse(wallet)
+    try {
+      const wallet = localStorage.getItem(UiUtil.WCM_RECENT_WALLET_DATA)
+      if (wallet) {
+        const json = JSON.parse(wallet)
 
-      return json as WalletData
+        return json as WalletData
+      }
+
+      return undefined
+    } catch {
+      console.info('Unable to get recent wallet')
     }
 
     return undefined

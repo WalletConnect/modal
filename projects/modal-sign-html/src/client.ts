@@ -176,6 +176,10 @@ export class WalletConnectModalSign {
       relayUrl: this.#options.relayUrl
     })
     const clientId = await this.#signClient.core.crypto.getClientId()
-    localStorage.setItem('WCM_WALLETCONNECT_CLIENT_ID', clientId)
+    try {
+      localStorage.setItem('WCM_WALLETCONNECT_CLIENT_ID', clientId)
+    } catch {
+      console.info('Unable to set client id')
+    }
   }
 }
