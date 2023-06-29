@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal-sign-html",
-  "version": "2.5.8",
+  "version": "2.5.9",
   "main": "dist/index.js",
   "unpkg": "dist/cdn/bundle.js",
   "type": "module",
@@ -18,8 +18,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@walletconnect/modal": "2.5.8",
-    "@walletconnect/sign-client": "2.8.5"
+    "@walletconnect/modal": "2.5.9",
+    "@walletconnect/sign-client": "2.8.6"
   },
   "keywords": [
     "web3",
