@@ -8,7 +8,7 @@
   },
   "dependencies": {
     "@nextui-org/react": "1.0.0-beta.13",
-    "@walletconnect/ethereum-provider": "2.8.5-canary-1",
+    "@walletconnect/ethereum-provider": "2.8.5",
     "@walletconnect/modal": "2.5.7-d84a60a",
     "@walletconnect/modal-auth-html": "2.5.7-d84a60a",
     "@walletconnect/modal-auth-react": "2.5.7-d84a60a",
