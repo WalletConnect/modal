@@ -25,8 +25,11 @@ export type WalletConnectModalEventCallback = (data: any) => void
 // -- Client ---------------------------------------------------------------
 export class WalletConnectModalSign {
   #options: WalletConnectModalSignOptions
+
   #modal: WalletConnectModal
+
   #initSignClientPromise?: Promise<void> = undefined
+
   #signClient?: InstanceType<typeof SignClient> = undefined
 
   public constructor(options: WalletConnectModalSignOptions) {

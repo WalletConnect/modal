@@ -17,4 +17,3 @@ export type {
   WalletData
 } from './src/types/controllerTypes'
 export { CoreUtil } from './src/utils/CoreUtil'
-import './src/utils/PolyfillUtil'

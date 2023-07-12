@@ -16,8 +16,7 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "buffer": "6.0.3",
-    "valtio": "1.10.6"
+    "valtio": "1.10.7"
   },
   "keywords": [
     "web3",

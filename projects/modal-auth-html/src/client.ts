@@ -25,8 +25,11 @@ export interface WalletConnectModalAuthSignInArguments {
 // -- Client ---------------------------------------------------------------
 export class WalletConnectModalAuth {
   #options: WalletConnectModalAuthOptions
+
   #modal: WalletConnectModal
+
   #initAuthClientPromise?: Promise<void> = undefined
+
   #authClient?: InstanceType<typeof AuthClient> = undefined
 
   public constructor(options: WalletConnectModalAuthOptions) {

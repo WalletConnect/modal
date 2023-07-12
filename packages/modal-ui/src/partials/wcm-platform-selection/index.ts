@@ -11,8 +11,11 @@ export class WcmPlatformSelection extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property({ type: Boolean }) public isMobile = false
+
   @property({ type: Boolean }) public isDesktop = false
+
   @property({ type: Boolean }) public isWeb = false
+
   @property({ type: Boolean }) public isRetry = false
 
   // -- private ------------------------------------------------------ //

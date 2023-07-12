@@ -15,6 +15,7 @@ export class WcmModal extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @state() private open = false
+
   @state() private active = false
 
   // -- lifecycle ---------------------------------------------------- //
@@ -37,6 +38,7 @@ export class WcmModal extends LitElement {
 
   // -- private ------------------------------------------------------ //
   private readonly unsubscribeModal?: () => void = undefined
+
   private abortController?: AbortController = undefined
 
   private get overlayEl() {

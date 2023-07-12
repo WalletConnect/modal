@@ -12,11 +12,17 @@ export class WcmWalletButton extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property() public onClick: () => void = () => null
+
   @property() public name = ''
+
   @property() public walletId = ''
+
   @property() public label?: string = undefined
+
   @property() public imageId?: string = undefined
+
   @property({ type: Boolean }) public installed? = false
+
   @property({ type: Boolean }) public recent? = false
 
   // -- private ------------------------------------------------------ //

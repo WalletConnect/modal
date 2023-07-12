@@ -18,7 +18,7 @@
   },
   "dependencies": {
     "@walletconnect/modal-sign-html": "2.5.9",
-    "mitt": "3.0.0"
+    "mitt": "3.0.1"
   },
   "peerDependencies": {
     "react": ">=17",
