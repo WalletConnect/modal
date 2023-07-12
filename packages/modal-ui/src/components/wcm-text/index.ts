@@ -20,6 +20,7 @@ export class WcmText extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property() public variant?: Variant = 'medium-regular'
+
   @property() public color?: Color | string = 'primary'
 
   // -- render ------------------------------------------------------- //

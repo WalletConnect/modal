@@ -14,9 +14,13 @@ export class WcmQrCode extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property() public uri = ''
+
   @property({ type: Number }) public size = 0
+
   @property() public imageId?: string = undefined
+
   @property() public walletId?: string = undefined
+
   @property() public imageUrl?: string = undefined
 
   // -- private ------------------------------------------------------ //

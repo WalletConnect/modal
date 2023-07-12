@@ -1,6 +1,6 @@
 {
   "name": "@walletconnect/modal-sign-react",
-  "version": "2.5.9",
+  "version": "2.6.0",
   "main": "dist/index.js",
   "type": "module",
   "types": "dist/_types/index.d.ts",
@@ -17,8 +17,8 @@
     "typecheck": "tsc --noEmit"
   },
   "dependencies": {
-    "@walletconnect/modal-sign-html": "2.5.9",
-    "mitt": "3.0.0"
+    "@walletconnect/modal-sign-html": "2.6.0",
+    "mitt": "3.0.1"
   },
   "peerDependencies": {
     "react": ">=17",

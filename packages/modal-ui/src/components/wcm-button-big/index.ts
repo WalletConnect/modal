@@ -12,6 +12,7 @@ export class WcmButtonBig extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property({ type: Boolean }) public disabled? = false
+
   @property() public variant?: Variant = 'primary'
 
   // -- render ------------------------------------------------------- //

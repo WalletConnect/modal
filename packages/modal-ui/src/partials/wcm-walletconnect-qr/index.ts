@@ -12,7 +12,9 @@ export class WcmWalletConnectQr extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property() public walletId? = ''
+
   @property() public imageId? = ''
+
   @state() private uri? = ''
 
   // -- lifecycle ---------------------------------------------------- //

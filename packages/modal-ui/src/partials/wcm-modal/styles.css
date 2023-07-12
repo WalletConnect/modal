@@ -47,7 +47,9 @@
   position: relative;
   border-radius: var(--wcm-container-border-radius);
   overflow: hidden;
-  box-shadow: 0px 6px 14px -6px rgba(10, 16, 31, 0.12), 0px 10px 32px -4px rgba(10, 16, 31, 0.1),
+  box-shadow:
+    0px 6px 14px -6px rgba(10, 16, 31, 0.12),
+    0px 10px 32px -4px rgba(10, 16, 31, 0.1),
     0 0 0 1px var(--wcm-color-overlay);
   background-color: var(--wcm-color-bg-1);
   color: var(--wcm-color-fg-1);

@@ -12,9 +12,13 @@ export class WcmConnectorWaiting extends LitElement {
 
   // -- state & properties ------------------------------------------- //
   @property() public walletId?: string = undefined
+
   @property() public imageId?: string = undefined
+
   @property({ type: Boolean }) public isError = false
+
   @property({ type: Boolean }) public isStale = false
+
   @property() public label = ''
 
   // -- private ------------------------------------------------------ //
