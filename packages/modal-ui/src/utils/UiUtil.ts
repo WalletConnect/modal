@@ -50,6 +50,7 @@ export const UiUtil = {
       const image = new Image()
       image.onload = resolve
       image.onerror = reject
+      image.crossOrigin = 'anonymous'
       image.src = src
     })
 
