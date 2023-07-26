@@ -1,5 +1,6 @@
 import { proxy, subscribe as valtioSub } from 'valtio/vanilla'
 import type { ModalCtrlState } from '../types/controllerTypes'
+import { CoreUtil } from '../utils/CoreUtil'
 import { OptionsCtrl } from './OptionsCtrl'
 import { RouterCtrl } from './RouterCtrl'
 
@@ -25,6 +26,7 @@ export const ModalCtrl = {
   async open(options?: OpenOptions) {
     return new Promise<void>(resolve => {
       const { isUiLoaded, isDataLoaded } = OptionsCtrl.state
+      CoreUtil.removeWalletConnectDeepLink()
 
       OptionsCtrl.setWalletConnectUri(options?.uri)
       OptionsCtrl.setChains(options?.chains)
