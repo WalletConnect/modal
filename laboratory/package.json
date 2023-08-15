@@ -8,16 +8,16 @@
   },
   "dependencies": {
     "@nextui-org/react": "1.0.0-beta.13",
-    "@walletconnect/ethereum-provider": "2.9.1",
+    "@walletconnect/ethereum-provider": "2.9.2-canary-02dba62",
     "@walletconnect/modal": "2.6.1",
     "@walletconnect/modal-auth-html": "2.6.1",
     "@walletconnect/modal-auth-react": "2.6.1",
     "@walletconnect/modal-sign-html": "2.6.1",
     "@walletconnect/modal-sign-react": "2.6.1",
-    "next": "13.4.12",
+    "next": "13.4.16",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-hot-toast": "2.4.1",
-    "valtio": "1.11.0"
+    "valtio": "1.11.2"
   }
 }
