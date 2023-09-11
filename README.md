@@ -1,4 +1,4 @@
-#### 📚 [Documentation](https://docs.walletconnect.com/2.0/web/walletConnectModal/installation)
+#### 📚 [Documentation](https://docs.walletconnect.com/2.0/advanced/walletconnectmodal/about)
 
 #### 🔎 [Examples](https://github.com/WalletConnect/web3modal-examples)
 
