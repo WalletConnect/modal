@@ -1,6 +1,6 @@
 import type { TemplateResult } from 'lit'
 import { svg } from 'lit'
-import QRCodeUtil from 'qrcode'
+import { encode } from 'uqr'
 
 type CoordinateMapping = [number, number[]]
 
@@ -17,26 +17,12 @@ function isAdjecentDots(cy: number, otherCy: number, cellSize: number) {
   return diff <= cellSize + CONNECTING_ERROR_MARGIN
 }
 
-function getMatrix(value: string, errorCorrectionLevel: QRCodeUtil.QRCodeErrorCorrectionLevel) {
-  const arr = Array.prototype.slice.call(
-    QRCodeUtil.create(value, { errorCorrectionLevel }).modules.data,
-    0
-  )
-  const sqrt = Math.sqrt(arr.length)
-
-  return arr.reduce(
-    (rows, key, index) =>
-      (index % sqrt === 0 ? rows.push([key]) : rows[rows.length - 1].push(key)) && rows,
-    []
-  )
-}
-
 export const QrCodeUtil = {
   generate(uri: string, size: number, logoSize: number) {
     const dotColor = '#141414'
     const edgeColor = '#ffffff'
     const dots: TemplateResult[] = []
-    const matrix = getMatrix(uri, 'Q')
+    const matrix = encode(uri, { ecc: 'Q', border: 0 }).data
     const cellSize = size / matrix.length
     const qrList = [
       { x: 0, y: 0 },
@@ -72,7 +58,7 @@ export const QrCodeUtil = {
     const circles: [number, number][] = []
 
     // Getting coordinates for each of the QR code dots
-    matrix.forEach((row: QRCodeUtil.QRCode[], i: number) => {
+    matrix.forEach((row, i: number) => {
       row.forEach((_, j: number) => {
         if (matrix[i][j]) {
           if (
