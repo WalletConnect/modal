@@ -22,7 +22,7 @@ export const QrCodeUtil = {
     const dotColor = '#141414'
     const edgeColor = '#ffffff'
     const dots: TemplateResult[] = []
-    const matrix = encode(uri, { ecc: 'Q' }).data
+    const matrix = encode(uri, { ecc: 'Q', border: 0 }).data
     const cellSize = size / matrix.length
     const qrList = [
       { x: 0, y: 0 },
