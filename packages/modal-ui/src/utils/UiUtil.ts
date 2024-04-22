@@ -7,6 +7,7 @@ import {
   RouterCtrl,
   ToastCtrl
 } from '@walletconnect/modal-core'
+import copy from 'copy-to-clipboard'
 import type { LitElement } from 'lit'
 
 export const UiUtil = {
@@ -112,7 +113,11 @@ export const UiUtil = {
     const { walletConnectUri } = OptionsCtrl.state
     if (walletConnectUri) {
       try {
-        await navigator.clipboard.writeText(walletConnectUri)
+        if (navigator.clipboard.writeText) {
+          await navigator.clipboard.writeText(walletConnectUri)
+        } else {
+          copy(walletConnectUri)
+        }
         ToastCtrl.openToast('Link copied', 'success')
       } catch {
         ToastCtrl.openToast('Failed to copy', 'error')
