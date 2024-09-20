@@ -36,6 +36,17 @@ export const CoreUtil = {
     return Array.isArray(data) && data.length > 0
   },
 
+  isTelegram() {
+    return (
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      Boolean((window as any).TelegramWebviewProxy) ||
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      Boolean((window as any).Telegram) ||
+      // eslint-disable-next-line @typescript-eslint/no-explicit-any
+      Boolean((window as any).TelegramWebviewProxyProto)
+    )
+  },
+
   formatNativeUrl(appUrl: string, wcUri: string, name: string): string {
     if (CoreUtil.isHttpUrl(appUrl)) {
       return this.formatUniversalUrl(appUrl, wcUri, name)

@@ -76,7 +76,7 @@ export const UiUtil = {
     }
   },
 
-  handleMobileLinking(wallet: WalletData) {
+  handleMobileLinking(wallet: WalletData, target = '_self' as '_self' | '_blank') {
     const { walletConnectUri } = OptionsCtrl.state
     const { mobile, name } = wallet
     const nativeUrl = mobile?.native
@@ -91,7 +91,7 @@ export const UiUtil = {
       } else if (universalUrl) {
         href = CoreUtil.formatNativeUrl(universalUrl, uri, name)
       }
-      CoreUtil.openHref(href, '_self')
+      CoreUtil.openHref(href, target)
     }
 
     if (walletConnectUri) {
@@ -186,6 +186,9 @@ export const UiUtil = {
     if (isMobileDevice) {
       if (isMobile) {
         RouterCtrl.push('MobileConnecting')
+        if (CoreUtil.isTelegram()) {
+          this.handleMobileLinking(wallet, '_blank')
+        }
       } else if (isWeb) {
         RouterCtrl.push('WebConnecting')
       } else {

@@ -26,23 +26,23 @@ export class WcmMobileConnectingView extends LitElement {
     const { mobile, name } = CoreUtil.getWalletRouterData()
     const nativeUrl = mobile?.native
     const universalUrl = mobile?.universal
-
+    const target = CoreUtil.isTelegram() ? '_blank' : '_self'
     if (nativeUrl && !forceUniversalUrl) {
       const href = CoreUtil.formatNativeUrl(nativeUrl, uri, name)
-      CoreUtil.openHref(href, '_self')
+      CoreUtil.openHref(href, target)
     } else if (universalUrl) {
       const href = CoreUtil.formatUniversalUrl(universalUrl, uri, name)
-      CoreUtil.openHref(href, '_self')
+      CoreUtil.openHref(href, target)
     }
   }
 
   private openMobileApp(forceUniversalUrl = false) {
     const { walletConnectUri } = OptionsCtrl.state
     const routerData = CoreUtil.getWalletRouterData()
-    UiUtil.setRecentWallet(routerData)
     if (walletConnectUri) {
       this.onFormatAndRedirect(walletConnectUri, forceUniversalUrl)
     }
+    UiUtil.setRecentWallet(routerData)
   }
 
   private onGoToAppStore(downloadUrl?: string) {
