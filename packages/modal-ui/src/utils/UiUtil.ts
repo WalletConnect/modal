@@ -81,9 +81,9 @@ export const UiUtil = {
     const { mobile, name } = wallet
     const nativeUrl = mobile?.native
     const universalUrl = mobile?.universal
-
+    // eslint-disable-next-line no-param-reassign
+    target = CoreUtil.isTelegram() ? '_blank' : target
     UiUtil.setRecentWallet(wallet)
-
     function onRedirect(uri: string) {
       let href = ''
       if (nativeUrl) {
@@ -104,7 +104,7 @@ export const UiUtil = {
 
     if (walletConnectUri) {
       CoreUtil.setWalletConnectAndroidDeepLink(walletConnectUri)
-      CoreUtil.openHref(walletConnectUri, '_self')
+      CoreUtil.openHref(walletConnectUri, CoreUtil.isTelegram() ? '_blank' : '_self')
     }
   },
 
@@ -186,7 +186,7 @@ export const UiUtil = {
     if (isMobileDevice) {
       if (isMobile) {
         RouterCtrl.push('MobileConnecting')
-        if (CoreUtil.isTelegram()) {
+        if (!CoreUtil.isAndroid() && CoreUtil.isTelegram()) {
           this.handleMobileLinking(wallet, '_blank')
         }
       } else if (isWeb) {

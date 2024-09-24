@@ -27,6 +27,8 @@ export class WcmMobileConnectingView extends LitElement {
     const nativeUrl = mobile?.native
     const universalUrl = mobile?.universal
     const target = CoreUtil.isTelegram() ? '_blank' : '_self'
+    // eslint-disable-next-line no-param-reassign
+    uri = CoreUtil.isTelegram() && CoreUtil.isAndroid() ? encodeURIComponent(uri) : uri
     if (nativeUrl && !forceUniversalUrl) {
       const href = CoreUtil.formatNativeUrl(nativeUrl, uri, name)
       CoreUtil.openHref(href, target)
