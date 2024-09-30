@@ -76,22 +76,20 @@ export const UiUtil = {
     }
   },
 
-  handleMobileLinking(wallet: WalletData) {
+  handleMobileLinking(wallet: WalletData, target = '_self' as '_self' | '_blank') {
     const { walletConnectUri } = OptionsCtrl.state
     const { mobile, name } = wallet
     const nativeUrl = mobile?.native
     const universalUrl = mobile?.universal
-
     UiUtil.setRecentWallet(wallet)
-
     function onRedirect(uri: string) {
-      let href = ''
       if (nativeUrl) {
-        href = CoreUtil.formatUniversalUrl(nativeUrl, uri, name)
+        const href = CoreUtil.formatNativeUrl(nativeUrl, uri, name)
+        CoreUtil.openHref(href, target)
       } else if (universalUrl) {
-        href = CoreUtil.formatNativeUrl(universalUrl, uri, name)
+        const href = CoreUtil.formatUniversalUrl(universalUrl, uri, name)
+        CoreUtil.openHref(href, target)
       }
-      CoreUtil.openHref(href, '_self')
     }
 
     if (walletConnectUri) {
@@ -104,7 +102,7 @@ export const UiUtil = {
 
     if (walletConnectUri) {
       CoreUtil.setWalletConnectAndroidDeepLink(walletConnectUri)
-      CoreUtil.openHref(walletConnectUri, '_self')
+      CoreUtil.openHref(walletConnectUri, CoreUtil.isTelegram() ? '_blank' : '_self')
     }
   },
 
@@ -186,6 +184,9 @@ export const UiUtil = {
     if (isMobileDevice) {
       if (isMobile) {
         RouterCtrl.push('MobileConnecting')
+        if (!CoreUtil.isAndroid() && CoreUtil.isTelegram()) {
+          this.handleMobileLinking(wallet, '_blank')
+        }
       } else if (isWeb) {
         RouterCtrl.push('WebConnecting')
       } else {

@@ -9,7 +9,8 @@ export class WcmConnectWalletView extends LitElement {
 
   // -- private ------------------------------------------------------ //
   private viewTemplate() {
-    if (CoreUtil.isAndroid()) {
+    // Disabled custom android deeplink handling in telegram mini apps because it doesn't work
+    if (CoreUtil.isAndroid() && !CoreUtil.isTelegram()) {
       return html`<wcm-android-wallet-selection></wcm-android-wallet-selection>`
     }
 
