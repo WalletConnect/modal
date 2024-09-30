@@ -81,17 +81,15 @@ export const UiUtil = {
     const { mobile, name } = wallet
     const nativeUrl = mobile?.native
     const universalUrl = mobile?.universal
-    // eslint-disable-next-line no-param-reassign
-    target = CoreUtil.isTelegram() ? '_blank' : target
     UiUtil.setRecentWallet(wallet)
     function onRedirect(uri: string) {
-      let href = ''
       if (nativeUrl) {
-        href = CoreUtil.formatUniversalUrl(nativeUrl, uri, name)
+        const href = CoreUtil.formatNativeUrl(nativeUrl, uri, name)
+        CoreUtil.openHref(href, target)
       } else if (universalUrl) {
-        href = CoreUtil.formatNativeUrl(universalUrl, uri, name)
+        const href = CoreUtil.formatUniversalUrl(universalUrl, uri, name)
+        CoreUtil.openHref(href, target)
       }
-      CoreUtil.openHref(href, target)
     }
 
     if (walletConnectUri) {

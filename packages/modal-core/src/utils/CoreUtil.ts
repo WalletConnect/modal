@@ -51,6 +51,7 @@ export const CoreUtil = {
     if (CoreUtil.isHttpUrl(appUrl)) {
       return this.formatUniversalUrl(appUrl, wcUri, name)
     }
+
     let safeAppUrl = appUrl
     if (!safeAppUrl.includes('://')) {
       safeAppUrl = appUrl.replaceAll('/', '').replaceAll(':', '')
@@ -70,6 +71,23 @@ export const CoreUtil = {
       return this.formatNativeUrl(appUrl, wcUri, name)
     }
     let safeAppUrl = appUrl
+    //  Universal link required in telegram context
+    if (safeAppUrl.startsWith('https://t.me')) {
+      // eslint-disable-next-line require-unicode-regexp
+      const formattedUri = Buffer.from(wcUri).toString('base64').replace(/[=]/g, '')
+      if (safeAppUrl.endsWith('/')) {
+        safeAppUrl = safeAppUrl.slice(0, -1)
+      }
+
+      this.setWalletConnectDeepLink(safeAppUrl, name)
+
+      const link = safeAppUrl.includes('?')
+        ? `${safeAppUrl}&startapp=${formattedUri}`
+        : `${safeAppUrl}?startapp=${formattedUri}`
+
+      return link
+    }
+
     if (!safeAppUrl.endsWith('/')) {
       safeAppUrl = `${safeAppUrl}/`
     }
@@ -86,7 +104,8 @@ export const CoreUtil = {
   },
 
   openHref(href: string, target: '_blank' | '_self') {
-    window.open(href, target, 'noreferrer noopener')
+    const adjustedTarget = this.isTelegram() ? '_blank' : target
+    window.open(href, adjustedTarget, 'noreferrer noopener')
   },
 
   setWalletConnectDeepLink(href: string, name: string) {
