@@ -38,8 +38,9 @@ export const CoreUtil = {
 
   isTelegram() {
     return (
-      // eslint-disable-next-line @typescript-eslint/no-explicit-any
-      Boolean((window as any).TelegramWebviewProxy) ||
+      (typeof window !== 'undefined' &&
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        Boolean((window as any).TelegramWebviewProxy)) ||
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
       Boolean((window as any).Telegram) ||
       // eslint-disable-next-line @typescript-eslint/no-explicit-any
