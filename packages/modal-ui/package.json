@@ -19,10 +19,9 @@
     "@walletconnect/modal-core": "2.6.2",
     "lit": "2.8.0",
     "motion": "10.16.2",
-    "qrcode": "1.5.3"
+    "uqr": "0.1.2"
   },
   "devDependencies": {
-    "@types/qrcode": "1.5.2",
     "eslint-plugin-lit": "1.9.1",
     "eslint-plugin-wc": "1.5.0"
   },
