@@ -91,18 +91,28 @@ export const ThemeUtil = {
   },
 
   setTheme() {
-    const root: HTMLElement | null = document.querySelector(':root')
+    const headTag = document.getElementsByTagName('head')[0]
+    const styleTag = document.createElement('style')
+
     const { themeVariables } = ThemeCtrl.state
 
-    if (root) {
-      const variables = {
-        ...themeModeVariables(),
-        ...themeVariablesPresets(),
-        ...themeVariables
-      }
-
-      Object.entries(variables).forEach(([key, val]) => root.style.setProperty(key, val))
+    const variables = {
+      ...themeModeVariables(),
+      ...themeVariablesPresets(),
+      ...themeVariables
     }
+
+    const styleValues = Object.entries(variables)
+      .map(([key, val]) => `${key}: ${val};`)
+      .join('\n')
+
+    styleTag.innerHTML = `
+    :root {
+      ${styleValues}
+    }
+    `
+
+    headTag.appendChild(styleTag)
   },
 
   globalCss: css`
