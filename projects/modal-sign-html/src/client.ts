@@ -41,15 +41,17 @@ export class WalletConnectModalSign {
   // -- public ------------------------------------------------------------
   public async connect(args: WalletConnectModalSignConnectArguments) {
     const { requiredNamespaces, optionalNamespaces } = args
+    let unsubscribeModal: (() => void) | null = null
 
     return new Promise<WalletConnectModalSignSession>(async (resolve, reject) => {
       await this.#initSignClient()
 
-      const unsubscribeModal = this.#modal.subscribeModal(state => {
-        if (!state.open) {
-          unsubscribeModal()
-          reject(new Error('Modal closed'))
-        }
+      const modalPromise = new Promise<never>((_, modalReject) => {
+        unsubscribeModal = this.#modal.subscribeModal(state => {
+          if (!state.open) {
+            modalReject(new Error('Modal closed'))
+          }
+        })
       })
 
       const { uri, approval } = await this.#signClient!.connect(args)
@@ -74,12 +76,12 @@ export class WalletConnectModalSign {
       }
 
       try {
-        const session = await approval()
+        const session = await Promise.race([modalPromise, approval()])
         resolve(session)
       } catch (err) {
         reject(err)
       } finally {
-        unsubscribeModal()
+        unsubscribeModal?.()
         this.#modal.closeModal()
       }
     })
